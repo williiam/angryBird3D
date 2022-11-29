@@ -37,6 +37,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.1645504, y: 3, z: -2.9}
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -63,10 +64,11 @@ MonoBehaviour:
   Slingshot: {fileID: 0}
   NewHighscore: {fileID: 0}
   RemainingBirds: 3
+  BirdDestructionTime: 5
   IsLevelCleared: 0
   IsLevelCompleted: 0
-  Score: 
-  HighScore: 
+  ActiveTurn: 0
+  Score: 0
   WoodDestruction: {fileID: 1502964920247489540}
   IceDestruction: {fileID: 1502964920247489543}
   PigDestroy: {fileID: 1502964920247489542}
