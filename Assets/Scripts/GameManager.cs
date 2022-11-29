@@ -44,7 +44,8 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (!IsLevelCleared && GameObject.FindGameObjectsWithTag("Pig").Length == 0)
+        // if (!IsLevelCleared && GameObject.FindGameObjectsWithTag("Pig").Length == 0)
+        if (!IsLevelCleared&&false)
         {
             IsLevelCleared = true;
             LevelCleared.Play();
