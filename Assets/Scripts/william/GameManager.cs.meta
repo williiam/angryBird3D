@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Scripts/william/GameManager.cs.meta
 guid: 4ed5477f3ab2849eea8358c7c94c25d9
+=======
+guid: b697d5000a0e16f44ac8ed92d8a4ad4b
+>>>>>>> d20f84d7323773ed69ee9b7bb2491d5a6c4fd310:Assets/Scripts/GameManager.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
