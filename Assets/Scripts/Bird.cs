@@ -18,10 +18,12 @@ public class Bird : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (_isPressed && !_isFired && !GameManager.Instance.IsLevelCleared)
+        if (_isPressed && !_isFired)
         {
             Vector3 mousePosition = Input.mousePosition;
-            Vector3 worldPosition = Camera.main.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, 6.5f));
+            Vector3 worldPosition = Camera.main.ScreenToWorldPoint(
+                new Vector3(mousePosition.x, mousePosition.y, 6.5f)
+            );
             if (worldPosition.y >= 0.2f && worldPosition.y <= 8f)
             {
                 Rb.position = worldPosition;
@@ -31,7 +33,7 @@ public class Bird : MonoBehaviour
 
     void OnMouseDown()
     {
-        if (_isFired || GameManager.Instance.IsLevelCleared)
+        if (_isFired)
         {
             return;
         }
@@ -43,17 +45,14 @@ public class Bird : MonoBehaviour
 
     void OnMouseUp()
     {
-        if (_isFired || GameManager.Instance.IsLevelCleared)
+        if (_isFired)
         {
             return;
         }
 
         _isPressed = false;
         Rb.isKinematic = false;
-
-        GameManager.Instance.ActiveTurn = true;
-
-        GetComponent<TrailRenderer>().enabled = true;
+        // GetComponent<TrailRenderer>().enabled = true;
         _isFired = true;
         SlingshotRelease.Play();
         Flying.Play();
@@ -62,17 +61,16 @@ public class Bird : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        GetComponent<TrailRenderer>().enabled = false;
-        if (!collision.collider.CompareTag("Ground"))
-        {
-            GameObject feathers = Instantiate(Feathers, transform.position, Quaternion.identity);
-            Destroy(feathers, 2);
-            if (!BirdCollision.isPlaying)
-            {
-                BirdCollision.Play();
-            }
-            GameManager.Instance.AddScore(Random.Range(5, 25) * 10, transform.position, Color.white);
-        }
+        // GetComponent<TrailRenderer>().enabled = false;
+        // if (!collision.collider.CompareTag("Ground"))
+        // {
+        //     GameObject feathers = Instantiate(Feathers, transform.position, Quaternion.identity);
+        //     Destroy(feathers, 2);
+        //     if (!BirdCollision.isPlaying)
+        //     {
+        //         BirdCollision.Play();
+        //     }
+        // }
     }
 
     IEnumerator Release()
@@ -87,8 +85,8 @@ public class Bird : MonoBehaviour
     {
         yield return new WaitForSeconds(DestructionTime);
 
-        GameManager.Instance.SetNewBird();
-        GameManager.Instance.BirdDestroy.Play();
+        GameManagerV2.Instance.SetNewBird();
+        // GameManagerV2.Instance.BirdDestroy.Play();
         Instantiate(FeatherExplosion, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
