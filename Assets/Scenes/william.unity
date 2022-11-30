@@ -301,6 +301,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!82 &716949922 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1502964920247489540, guid: 4feda5097ddd04031aeb8f59d4180129, type: 3}
+  m_PrefabInstance: {fileID: 1573347189}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &774686780 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1023183460590495212, guid: 4802936ab0eb74b52977d9753843d4fc, type: 3}
@@ -599,7 +604,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2393859571144043853, guid: 3b9258c15cb224e5898293735b964c9f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.9
+      value: 1.43
       objectReference: {fileID: 0}
     - target: {fileID: 2393859571144043853, guid: 3b9258c15cb224e5898293735b964c9f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -647,6 +652,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1502964920247489538, guid: 4feda5097ddd04031aeb8f59d4180129, type: 3}
+      propertyPath: PigHit
+      value: 
+      objectReference: {fileID: 716949922}
+    - target: {fileID: 1502964920247489538, guid: 4feda5097ddd04031aeb8f59d4180129, type: 3}
       propertyPath: LevelWon
       value: 
       objectReference: {fileID: 1609179539}
@@ -663,6 +672,30 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 649046434}
     - target: {fileID: 1502964920247489538, guid: 4feda5097ddd04031aeb8f59d4180129, type: 3}
+      propertyPath: StillBird
+      value: 
+      objectReference: {fileID: 8503005400551819454, guid: 0b36a86d6e01c40adb5a886868f2ff88, type: 3}
+    - target: {fileID: 1502964920247489538, guid: 4feda5097ddd04031aeb8f59d4180129, type: 3}
+      propertyPath: PigDestroy
+      value: 
+      objectReference: {fileID: 716949922}
+    - target: {fileID: 1502964920247489538, guid: 4feda5097ddd04031aeb8f59d4180129, type: 3}
+      propertyPath: BirdDestroy
+      value: 
+      objectReference: {fileID: 716949922}
+    - target: {fileID: 1502964920247489538, guid: 4feda5097ddd04031aeb8f59d4180129, type: 3}
+      propertyPath: LevelFailed
+      value: 
+      objectReference: {fileID: 716949922}
+    - target: {fileID: 1502964920247489538, guid: 4feda5097ddd04031aeb8f59d4180129, type: 3}
+      propertyPath: FloatingText
+      value: 
+      objectReference: {fileID: 3165260987866026953, guid: 6cb26347becf04239838f6c51cbcd8ae, type: 3}
+    - target: {fileID: 1502964920247489538, guid: 4feda5097ddd04031aeb8f59d4180129, type: 3}
+      propertyPath: LevelCleared
+      value: 
+      objectReference: {fileID: 716949922}
+    - target: {fileID: 1502964920247489538, guid: 4feda5097ddd04031aeb8f59d4180129, type: 3}
       propertyPath: NewHighscore
       value: 
       objectReference: {fileID: 2070316165}
@@ -670,6 +703,22 @@ PrefabInstance:
       propertyPath: HighscoreText
       value: 
       objectReference: {fileID: 668921308}
+    - target: {fileID: 1502964920247489538, guid: 4feda5097ddd04031aeb8f59d4180129, type: 3}
+      propertyPath: SlingshotBird
+      value: 
+      objectReference: {fileID: 6356810984701007963, guid: ddabb376cdf52433bb29d0ebd3f9800e, type: 3}
+    - target: {fileID: 1502964920247489538, guid: 4feda5097ddd04031aeb8f59d4180129, type: 3}
+      propertyPath: IceDestruction
+      value: 
+      objectReference: {fileID: 716949922}
+    - target: {fileID: 1502964920247489538, guid: 4feda5097ddd04031aeb8f59d4180129, type: 3}
+      propertyPath: LevelCompleted
+      value: 
+      objectReference: {fileID: 716949922}
+    - target: {fileID: 1502964920247489538, guid: 4feda5097ddd04031aeb8f59d4180129, type: 3}
+      propertyPath: WoodDestruction
+      value: 
+      objectReference: {fileID: 716949922}
     - target: {fileID: 1502964920247489539, guid: 4feda5097ddd04031aeb8f59d4180129, type: 3}
       propertyPath: m_Name
       value: Game Manager

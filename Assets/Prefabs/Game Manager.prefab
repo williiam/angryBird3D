@@ -51,14 +51,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1502964920247489539}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 208ec8e84679b482094e42972e6dec86, type: 3}
+  m_Script: {fileID: 11500000, guid: 4ed5477f3ab2849eea8358c7c94c25d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ScoreText: {fileID: 0}
   HighscoreText: {fileID: 0}
-  FloatingText: {fileID: 3165260987866026953, guid: 6cb26347becf04239838f6c51cbcd8ae, type: 3}
-  SlingshotBird: {fileID: 6356810984701007963, guid: ddabb376cdf52433bb29d0ebd3f9800e, type: 3}
-  StillBird: {fileID: 8503005400551819454, guid: 0b36a86d6e01c40adb5a886868f2ff88, type: 3}
+  FloatingText: {fileID: 0}
+  SlingshotBird: {fileID: 0}
+  StillBird: {fileID: 0}
   LevelWon: {fileID: 0}
   LevelLost: {fileID: 0}
   Slingshot: {fileID: 0}
@@ -69,14 +69,14 @@ MonoBehaviour:
   IsLevelCompleted: 0
   ActiveTurn: 0
   Score: 0
-  WoodDestruction: {fileID: 1502964920247489540}
-  IceDestruction: {fileID: 1502964920247489543}
-  PigDestroy: {fileID: 1502964920247489542}
-  BirdDestroy: {fileID: 1502964920247489563}
-  PigHit: {fileID: 1502964920247489560}
-  LevelCleared: {fileID: 1502964920247489562}
-  LevelFailed: {fileID: 1502964920247489565}
-  LevelCompleted: {fileID: 1502964920247489567}
+  WoodDestruction: {fileID: 0}
+  IceDestruction: {fileID: 0}
+  PigDestroy: {fileID: 0}
+  BirdDestroy: {fileID: 0}
+  PigHit: {fileID: 0}
+  LevelCleared: {fileID: 0}
+  LevelFailed: {fileID: 0}
+  LevelCompleted: {fileID: 0}
 --- !u!82 &1502964920247489540
 AudioSource:
   m_ObjectHideFlags: 0
