@@ -11,10 +11,10 @@ public class Wood : MonoBehaviour
         {
             WoodCollision.Play();
         }
-		if (collision.relativeVelocity.magnitude > 13.5f)
-		{
-            Destroy();
-		}
+		// if (collision.relativeVelocity.magnitude > 13.5f)
+		// {
+        //     Destroy();
+		// }
 	}
 
 	private void Destroy()

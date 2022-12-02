@@ -6,10 +6,10 @@ public class Ice : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.relativeVelocity.magnitude > 8)
-        {
-            Destroy();
-        }
+        // if (collision.relativeVelocity.magnitude > 8)
+        // {
+        //     Destroy();
+        // }
     }
 
     private void Destroy()

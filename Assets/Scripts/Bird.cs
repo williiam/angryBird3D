@@ -16,13 +16,15 @@ public class Bird : MonoBehaviour
     private bool _isPressed;
     private bool _isFired;
 
+    public float force;
+
     void FixedUpdate()
     {
         if (_isPressed && !_isFired)
         {
             Vector3 mousePosition = Input.mousePosition;
             Vector3 worldPosition = Camera.main.ScreenToWorldPoint(
-                new Vector3(mousePosition.x, mousePosition.y, 6.5f)
+                new Vector3(mousePosition.x, mousePosition.y, force)
             );
             if (worldPosition.y >= 0.2f && worldPosition.y <= 8f)
             {
