@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,6 +10,8 @@ public class GameManagerV2 : MonoBehaviour
     public static GameManagerV2 Instance;
     public GameObject sp;
     public GameObject StillBird;
+    public GameObject completePanel;
+    public GameObject failedPanel;
     private AudioSource GMplayer;
     public AudioClip levelStart;
     public AudioClip levelClear;
@@ -17,6 +20,7 @@ public class GameManagerV2 : MonoBehaviour
     public AudioClip levelFailed;
     public int remainingBirds = 3;
     public int level;
+    public float panelRate = 3f;
     public bool gameStatus;
     
     // Start is called before the first frame update
@@ -36,6 +40,10 @@ public class GameManagerV2 : MonoBehaviour
         // 設置遊戲狀態為進行中
         gameStatus = true;
 
+        // 設置panel的scale為0
+        completePanel.transform.localScale = Vector3.zero;
+        failedPanel.transform.localScale = Vector3.zero;
+
         // 設置待命鳥
         SetNewBird();
     }
@@ -44,6 +52,7 @@ public class GameManagerV2 : MonoBehaviour
     void Update()
     {
         // TODO: 分數系統
+        // TODO: 偵測全局靜止才setBird, 若有camera視角帶開則不必
     }
 
     private void CheckGameStatus() 
@@ -75,25 +84,39 @@ public class GameManagerV2 : MonoBehaviour
     }
 
     private void LevelComplete() {
-        // TODO: 下一關的UI或是全部破關的UI
+        // 遊戲完成，顯示遊戲完成面板
+        StartCoroutine(ShowPanel(completePanel));
         GMplayer.PlayOneShot(levelComplete);
-        // 播放完音效後遊戲暫停
-        Time.timeScale = 0;
-        // 目前為測試方便自動reload
-        Debug.Log("reload level");
-        SceneManager.LoadScene(level);
-        Time.timeScale = 1;
     }
 
     private void LevelFailed() {
-        // TODO: 遊戲失敗及重新開始UI
+        // 遊戲失敗，顯示遊戲失敗面板
+        StartCoroutine(ShowPanel(failedPanel));
         GMplayer.PlayOneShot(levelFailed);
-        // 播放完音效後遊戲暫停
+    }
+
+    IEnumerator ShowPanel(GameObject panel) {
+        // 漸放大面板
+        float timer = 0f;
+        while(timer < 1f) {
+            panel.transform.localScale = new Vector3(timer, timer, 0);
+            timer += Time.deltaTime * panelRate;
+            yield return null;
+        }
+        // 遊戲暫停
         Time.timeScale = 0;
-        // 目前為測試方便自動reload
-        Debug.Log("reload level");
-        SceneManager.LoadScene(level);
-        Time.timeScale = 1;
+    }
+
+    IEnumerator HidePanel(GameObject panel) {
+        // 漸縮小面板
+        float timer = 0f;
+        while(timer < 1f) {
+            panel.transform.localScale = new Vector3(1f - timer, 1f - timer, 0);
+            timer += Time.deltaTime * panelRate;
+            yield return null;
+        }
+        // 遊戲暫停
+        Time.timeScale = 0;
     }
 
     public void SetNewBird()
