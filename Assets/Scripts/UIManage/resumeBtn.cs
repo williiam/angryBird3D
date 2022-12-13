@@ -9,10 +9,13 @@ public class resumeBtn : MonoBehaviour
     public GameObject optionBtn;
     public AudioClip btnClick;
     public AudioSource btnPlayer;
+    public GameObject gameManager;
+    public AudioSource GMplayer;
     private float menuRate = 3f;
     // Start is called before the first frame update
     void Start()
     {
+        GMplayer = gameManager.GetComponent<AudioSource>();
         btnPlayer = GetComponent<AudioSource>();
         GetComponent<Button>().onClick.AddListener(startcoroutine);
     }
@@ -24,6 +27,8 @@ public class resumeBtn : MonoBehaviour
     }
 
     private void startcoroutine() {
+        // 繼續播放遊戲背景音
+        GMplayer.Play();
         // 播放按鍵聲
         btnPlayer.Stop();
         btnPlayer.PlayOneShot(btnClick);

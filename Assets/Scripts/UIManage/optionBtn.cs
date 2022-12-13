@@ -8,11 +8,14 @@ public class optionBtn : MonoBehaviour
     public GameObject gameMenu;
     public AudioClip btnClick;
     public AudioSource btnPlayer;
+    public GameObject gameManager;
+    public AudioSource GMplayer;
     private float menuRate = 3f;
     // Start is called before the first frame update
     void Start()
     {
         btnPlayer = GetComponent<AudioSource>();
+        GMplayer = gameManager.GetComponent<AudioSource>();
         GetComponent<Button>().onClick.AddListener(startcoroutine);
     }
 
@@ -23,6 +26,9 @@ public class optionBtn : MonoBehaviour
     }
 
     private void startcoroutine() {
+        this.transform.localScale = Vector3.zero;   // initial is 0.4, 2, 1
+        // 暫停遊戲背景音
+        GMplayer.Stop();
         // 播放按鍵聲
         btnPlayer.PlayOneShot(btnClick);
         StartCoroutine(ShowGameMenu());
@@ -38,6 +44,5 @@ public class optionBtn : MonoBehaviour
         }
         // 遊戲暫停
         Time.timeScale = 0;
-        this.transform.localScale = Vector3.zero;   // initial is 0.4, 2, 1
     }
 }
