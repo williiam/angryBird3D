@@ -8,6 +8,7 @@ public class homeBtn : MonoBehaviour
 {
     public AudioClip btnClick;
     public AudioSource btnPlayer;
+    private float btnClickTime = 0.261f;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +29,11 @@ public class homeBtn : MonoBehaviour
     }
 
     IEnumerator BackToHome() {
+        // 先播放按鍵聲再load new scene
+        Time.timeScale = 1;
+        yield return new WaitForSeconds(btnClickTime);
+        Time.timeScale = 0;
+        
         // TODO: 場景之後改成home scene
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         // 遊戲繼續
