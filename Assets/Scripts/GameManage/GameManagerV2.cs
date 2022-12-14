@@ -12,6 +12,7 @@ public class GameManagerV2 : MonoBehaviour
     public GameObject StillBird;
     public GameObject completePanel;
     public GameObject failedPanel;
+    public GameObject optionBtn;
     private AudioSource GMplayer;
     public AudioClip levelStart;
     public AudioClip levelClear;
@@ -96,10 +97,12 @@ public class GameManagerV2 : MonoBehaviour
     }
 
     IEnumerator ShowPanel(GameObject panel) {
+        // 隱藏optionBtn
+        optionBtn.transform.localScale = Vector3.zero;
         // 漸放大面板
         float timer = 0f;
         while(timer < 1f) {
-            panel.transform.localScale = new Vector3(timer, timer, 0);
+            panel.transform.localScale = new Vector3(timer, timer * 1.5f, 0);
             timer += Time.deltaTime * panelRate;
             yield return null;
         }
@@ -111,7 +114,7 @@ public class GameManagerV2 : MonoBehaviour
         // 漸縮小面板
         float timer = 0f;
         while(timer < 1f) {
-            panel.transform.localScale = new Vector3(1f - timer, 1f - timer, 0);
+            panel.transform.localScale = new Vector3(1f - timer, 1.5f - (timer * 1.5f), 0);
             timer += Time.deltaTime * panelRate;
             yield return null;
         }

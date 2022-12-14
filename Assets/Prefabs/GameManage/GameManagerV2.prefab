@@ -49,6 +49,7 @@ MonoBehaviour:
   StillBird: {fileID: 8503005400551819454, guid: 0b36a86d6e01c40adb5a886868f2ff88, type: 3}
   completePanel: {fileID: 2627713404741328810, guid: 1af70a48551d4d64298490e72ccb7a0d, type: 3}
   failedPanel: {fileID: 121227152239737966, guid: 8c282bd0bcbe64e48bbdc8f86b60d046, type: 3}
+  optionBtn: {fileID: 645110488784597069, guid: a616d83df977e8b4a9122d52cec42b33, type: 3}
   levelStart: {fileID: 8300000, guid: 958933a1c5d5e4efe8721778ce0039ec, type: 3}
   levelClear: {fileID: 8300000, guid: b5917facaddc343cf875d513600f0111, type: 3}
   levelComplete: {fileID: 8300000, guid: 8e91c3a6a96e748469d1d5dc8fc841b5, type: 3}
