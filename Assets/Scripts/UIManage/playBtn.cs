@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class homeBtn : MonoBehaviour
+public class playBtn : MonoBehaviour
 {
     public AudioClip btnClick;
     public AudioSource btnPlayer;
@@ -25,19 +25,13 @@ public class homeBtn : MonoBehaviour
     private void startcoroutine() {
         // 播放按鍵聲
         btnPlayer.PlayOneShot(btnClick);
-        StartCoroutine(BackToHome());
+        StartCoroutine(LoadGameScene());
     }
 
-    IEnumerator BackToHome() {
-        // 先播放按鍵聲再load new scene
-        Time.timeScale = 1;
-        yield return new WaitForSeconds(btnClickTime);
-        Time.timeScale = 0;
-        
-        // 改成home scene
-        SceneManager.LoadScene(0);
-        // 遊戲繼續
-        Time.timeScale = 1;
+    IEnumerator LoadGameScene() {
+        //yield return new WaitForSeconds(btnClickTime);
+        // load game scene
+        SceneManager.LoadScene(1);
         yield return null;
     }
 }
