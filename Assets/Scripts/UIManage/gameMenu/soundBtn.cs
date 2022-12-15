@@ -15,9 +15,12 @@ public class soundBtn : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // 遊戲開始時聲音為開啟
-        AudioListener.volume = 1;
-        this.GetComponent<Image>().sprite = soundOn;
+        // 偵測遊戲聲音使用對應的sprite
+        if(AudioListener.volume == 0) {
+            this.GetComponent<Image>().sprite = soundOff;
+        } else {
+            this.GetComponent<Image>().sprite = soundOn;
+        }
         btnPlayer = GetComponent<AudioSource>();
         GetComponent<Button>().onClick.AddListener(startcoroutine);
     }
