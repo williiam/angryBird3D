@@ -18,78 +18,82 @@ public class Bird : MonoBehaviour
 
     public float force;
 
-    void FixedUpdate()
+    // void FixedUpdate()
+    // {
+    //     if (_isPressed && !_isFired)
+    //     {
+    //         Vector3 mousePosition = Input.mousePosition;
+    //         Vector3 worldPosition = Camera.main.ScreenToWorldPoint(
+    //             new Vector3(mousePosition.x, mousePosition.y, force)
+    //         );
+    //         if (worldPosition.y >= 0.2f && worldPosition.y <= 8f)
+    //         {
+    //             Rb.position = worldPosition;
+    //         }
+    //     }
+    // }
+
+    // void OnMouseDown()
+    // {
+    //     if (_isFired)
+    //     {
+    //         return;
+    //     }
+
+    //     _isPressed = true;
+    //     Rb.isKinematic = true;
+    //     Slingshot.Play();
+    // }
+
+    // void OnMouseUp()
+    // {
+    //     if (_isFired)
+    //     {
+    //         return;
+    //     }
+
+    //     _isPressed = false;
+    //     Rb.isKinematic = false;
+    //     // GetComponent<TrailRenderer>().enabled = true;
+    //     _isFired = true;
+    //     SlingshotRelease.Play();
+    //     Flying.Play();
+    //     StartCoroutine(Release());
+    // }
+
+    // public void Shoot() {
+    //     Debug.Log("123");
+    // }
+
+    private void OnCollisionEnter(Collision collision)
     {
-        if (_isPressed && !_isFired)
+        GetComponent<TrailRenderer>().enabled = false;
+        if (!collision.collider.CompareTag("Ground"))
         {
-            Vector3 mousePosition = Input.mousePosition;
-            Vector3 worldPosition = Camera.main.ScreenToWorldPoint(
-                new Vector3(mousePosition.x, mousePosition.y, force)
-            );
-            if (worldPosition.y >= 0.2f && worldPosition.y <= 8f)
+            GameObject feathers = Instantiate(Feathers, transform.position, Quaternion.identity);
+            Destroy(feathers, 2);
+            if (!BirdCollision.isPlaying)
             {
-                Rb.position = worldPosition;
+                BirdCollision.Play();
             }
         }
     }
 
-    void OnMouseDown()
-    {
-        if (_isFired)
-        {
-            return;
-        }
+    // IEnumerator Release()
+    // {
+    //     yield return new WaitForSeconds(ReleaseTime);
 
-        _isPressed = true;
-        Rb.isKinematic = true;
-        Slingshot.Play();
-    }
+    //     Destroy(GetComponent<SpringJoint>());
+    //     StartCoroutine(Explode());
+    // }
 
-    void OnMouseUp()
-    {
-        if (_isFired)
-        {
-            return;
-        }
+    // IEnumerator Explode()
+    // {
+    //     yield return new WaitForSeconds(DestructionTime);
 
-        _isPressed = false;
-        Rb.isKinematic = false;
-        // GetComponent<TrailRenderer>().enabled = true;
-        _isFired = true;
-        SlingshotRelease.Play();
-        Flying.Play();
-        StartCoroutine(Release());
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        // GetComponent<TrailRenderer>().enabled = false;
-        // if (!collision.collider.CompareTag("Ground"))
-        // {
-        //     GameObject feathers = Instantiate(Feathers, transform.position, Quaternion.identity);
-        //     Destroy(feathers, 2);
-        //     if (!BirdCollision.isPlaying)
-        //     {
-        //         BirdCollision.Play();
-        //     }
-        // }
-    }
-
-    IEnumerator Release()
-    {
-        yield return new WaitForSeconds(ReleaseTime);
-
-        Destroy(GetComponent<SpringJoint>());
-        StartCoroutine(Explode());
-    }
-
-    IEnumerator Explode()
-    {
-        yield return new WaitForSeconds(DestructionTime);
-
-        GameManagerV2.Instance.SetNewBird();
-        // GameManagerV2.Instance.BirdDestroy.Play();
-        Instantiate(FeatherExplosion, transform.position, Quaternion.identity);
-        Destroy(gameObject);
-    }
+    //     GameManagerV2.Instance.SetNewBird();
+    //     // GameManagerV2.Instance.BirdDestroy.Play();
+    //     Instantiate(FeatherExplosion, transform.position, Quaternion.identity);
+    //     Destroy(gameObject);
+    // }
 }

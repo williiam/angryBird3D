@@ -510,12 +510,12 @@ GameObject:
   - component: {fileID: 3494278583068983299}
   - component: {fileID: 7015215711188466712}
   - component: {fileID: 6122226122841444215}
-  - component: {fileID: 6122226122841444212}
   - component: {fileID: 6122226122841444218}
   - component: {fileID: 6122226122841444219}
   - component: {fileID: 6122226122841444217}
   - component: {fileID: 6122226122841444222}
   - component: {fileID: 6122226122841444213}
+  - component: {fileID: 2505993087608249894}
   m_Layer: 0
   m_Name: Slingshot Bird
   m_TagString: Bird
@@ -557,9 +557,9 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1.5
   m_Drag: 0
-  m_AngularDrag: 0.25
+  m_AngularDrag: 0.5
   m_UseGravity: 1
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -672,30 +672,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!145 &6122226122841444212
-SpringJoint:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6356810984701007963}
-  m_ConnectedBody: {fileID: 0}
-  m_ConnectedArticulationBody: {fileID: 0}
-  m_Anchor: {x: 0, y: 0, z: 0}
-  m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.28999996, y: -0.014550298, z: 0.48000002}
-  serializedVersion: 2
-  m_Spring: 50
-  m_Damper: 0.2
-  m_MinDistance: 0
-  m_MaxDistance: 0
-  m_Tolerance: 0.025
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_EnableCollision: 0
-  m_EnablePreprocessing: 1
-  m_MassScale: 1
-  m_ConnectedMassScale: 1
 --- !u!96 &6122226122841444218
 TrailRenderer:
   serializedVersion: 2
@@ -1105,6 +1081,18 @@ MonoBehaviour:
   ReleaseTime: 0.15
   DestructionTime: 5
   force: 2
+--- !u!114 &2505993087608249894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6356810984701007963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbca504998df23f4690ce2822747e093, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6779361033438316882
 GameObject:
   m_ObjectHideFlags: 0

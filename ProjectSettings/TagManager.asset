@@ -8,6 +8,7 @@ TagManager:
   - Bird
   - backgroundUI
   - UI
+  - Ground
   layers:
   - Default
   - TransparentFX
