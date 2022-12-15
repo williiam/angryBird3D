@@ -53,7 +53,7 @@ public class GameManagerV2 : MonoBehaviour
     void Update()
     {
         // TODO: 分數系統
-        // TODO: 偵測全局靜止才setBird, 若有camera視角帶開則不必
+        // TODO: 偵測全局靜止才setBird
     }
 
     private void CheckGameStatus() 
@@ -82,6 +82,36 @@ public class GameManagerV2 : MonoBehaviour
             GMplayer.PlayOneShot(levelUnclear); // levelUnclear is 4.716sec
             Invoke("LevelFailed", 4.716f);
         }
+
+        // 如果遊戲未結束，偵測到鳥靜止後開始偵測全局豬和建築
+        // 等到velocity都等於0才return
+        /*
+        GameObject[] buildings;
+        buildings = GameObject.FindGameObjectWithTag("Building");
+        GameObject bird = GameObject.FindGameObjectWithTag("Bird"); // 此處鳥的tag要與still bird有區別
+
+        // 偵測鳥是否靜止
+        while(true) {
+            if(bird.GetComponent<RigidBody>().velocity == 0f)
+                break;
+        }
+
+        // 等到鳥靜止後開始偵測建築跟豬是否靜止
+        while(true) {
+            bool canBreak = true;
+            int length = pigs.Length > buildings.Length ? pigs.Length : buildings.Length;
+            for(int i = 0; i < length; ++i) {
+                if((length < pigs.Length && pigs[i].GetComponent<RigidBody>().velocity != 0f)
+                    || (Length < buildings.Length && buildings[i].GetComponent<RigidBody>().velocity != 0f)) {
+                    canBreak = false;
+                    break;
+                }
+            }
+            if(canBreak) {
+                break;
+            }
+        }
+        */
     }
 
     private void LevelComplete() {
