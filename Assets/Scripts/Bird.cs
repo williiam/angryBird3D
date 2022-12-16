@@ -7,16 +7,23 @@ public class Bird : MonoBehaviour
     public Rigidbody Rb;
     public GameObject Feathers;
     public GameObject FeatherExplosion;
-    public AudioSource Slingshot;
-    public AudioSource SlingshotRelease;
-    public AudioSource Flying;
-    public AudioSource BirdCollision;
+    /*
+    public AudioClip Slingshot;
+    public AudioClip SlingshotRelease;
+    public AudioClip Flying;
+    */
+    public AudioClip BirdCollision;
+    private AudioSource BirdPlayer;
     public float ReleaseTime = 0.5f;
     public float DestructionTime = 5f;
     private bool _isPressed;
     private bool _isFired;
 
     public float force;
+
+    void Start() {
+        BirdPlayer = GetComponent<AudioSource>();
+    }
 
     // void FixedUpdate()
     // {
@@ -42,7 +49,7 @@ public class Bird : MonoBehaviour
 
     //     _isPressed = true;
     //     Rb.isKinematic = true;
-    //     Slingshot.Play();
+    //     BirdPlayer.PlayOneShot(Slingshot);
     // }
 
     // void OnMouseUp()
@@ -56,8 +63,8 @@ public class Bird : MonoBehaviour
     //     Rb.isKinematic = false;
     //     // GetComponent<TrailRenderer>().enabled = true;
     //     _isFired = true;
-    //     SlingshotRelease.Play();
-    //     Flying.Play();
+    //     BirdPlayer.PlayOneShot(SlingshotRelease);
+    //     BirdPlayer.PlayOneShot(Flying);
     //     StartCoroutine(Release());
     // }
 
@@ -72,9 +79,9 @@ public class Bird : MonoBehaviour
         {
             GameObject feathers = Instantiate(Feathers, transform.position, Quaternion.identity);
             Destroy(feathers, 2);
-            if (!BirdCollision.isPlaying)
+            if (!BirdPlayer.isPlaying)
             {
-                BirdCollision.Play();
+                BirdPlayer.PlayOneShot(BirdCollision);
             }
         }
     }

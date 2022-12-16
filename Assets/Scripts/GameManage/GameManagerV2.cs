@@ -89,7 +89,7 @@ public class GameManagerV2 : MonoBehaviour
         GameObject[] buildings;
         buildings = GameObject.FindGameObjectWithTag("Building");
         GameObject bird = GameObject.FindGameObjectWithTag("Bird"); // 此處鳥的tag要與still bird有區別
-
+        
         // 偵測鳥是否靜止
         while(true) {
             if(bird.GetComponent<RigidBody>().velocity == 0f)
