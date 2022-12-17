@@ -10,7 +10,7 @@ public class optionBtn : MonoBehaviour
     public AudioSource btnPlayer;
     public GameObject gameManager;
     public AudioSource GMplayer;
-    private float menuRate = 3f;
+    private float menuRate = 1f;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,7 +39,7 @@ public class optionBtn : MonoBehaviour
         float timer = 0f;
         while(timer < 1f) {
             gameMenu.transform.localScale = new Vector3(timer * 0.3f, timer * 1.8f, 0f);
-            timer += Time.deltaTime * menuRate;
+            timer += Time.fixedUnscaledDeltaTime * menuRate;
             yield return null;
         }
         // 遊戲暫停
