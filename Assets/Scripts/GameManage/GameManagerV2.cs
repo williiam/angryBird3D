@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Text = TMPro.TextMeshProUGUI;
 
 public class GameManagerV2 : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class GameManagerV2 : MonoBehaviour
     public GameObject completePanel;
     public GameObject failedPanel;
     public GameObject optionBtn;
+    public Text scoreText;
     private AudioSource GMplayer;
     public AudioClip levelStart;
     public AudioClip levelClear;
@@ -54,7 +56,6 @@ public class GameManagerV2 : MonoBehaviour
         SetNewBird();
 
         // 先計算出關卡總分
-        GameObject[] pigs;
         int pigQuan = GameObject.FindGameObjectsWithTag("Pig").Length;
         totalScore += pigQuan * 10000;
         totalScore += remainingBirds * 5000;
@@ -66,6 +67,7 @@ public class GameManagerV2 : MonoBehaviour
     {
         // TODO: 分數系統
         // TODO: 偵測全局靜止才setBird
+        // TODO: Camera三狀態
     }
 
     private void CheckGameStatus() 
@@ -80,6 +82,10 @@ public class GameManagerV2 : MonoBehaviour
         // 如果沒有豬則遊戲通關
         if(remainingPigs == 0) {
             gameStatus = false;
+            // 剩餘的鳥每隻+5000分
+            for(int i = 0; i < remainingBirds; ++i) {
+                AddScore(5000);
+            }
             // 停止遊戲音樂，播放通關音效
             GMplayer.Stop();
             GMplayer.PlayOneShot(levelClear);
@@ -132,6 +138,7 @@ public class GameManagerV2 : MonoBehaviour
 
     public void AddScore(int n) {
         score += n;
+        scoreText.text = "SCORE: " + score;
     }
 
     public int GetScore() {
@@ -155,6 +162,9 @@ public class GameManagerV2 : MonoBehaviour
     }
 
     IEnumerator ShowPanel(GameObject panel) {
+        // 隱藏scoreText
+        scoreText.transform.localScale = Vector3.zero;
+        // enable panel
         panel.SetActive(true);
         // 漸放大面板
         float timer = 0f;
@@ -166,6 +176,10 @@ public class GameManagerV2 : MonoBehaviour
         // 如果panel是completePanel,則觸發星星的動畫
         if(panel.GetComponent<starController>()) {
             panel.GetComponent<starController>().startcoroutine();
+        }
+        // 否則觸發豬的動畫
+        else if(panel.GetComponent<pigController>()) {
+            panel.GetComponent<pigController>().startcoroutine();
         }
         // 遊戲暫停
         Time.timeScale = 0;
