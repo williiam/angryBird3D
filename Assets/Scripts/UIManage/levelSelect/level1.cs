@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class playBtn : MonoBehaviour
+public class level1 : MonoBehaviour
 {
     public AudioClip btnClick;
     public AudioSource btnPlayer;
@@ -17,15 +17,13 @@ public class playBtn : MonoBehaviour
     }
 
     private void startcoroutine() {
-        // 播放按鍵聲
         btnPlayer.PlayOneShot(btnClick);
-        StartCoroutine(LoadGameScene());
+        StartCoroutine(LoadLevel1());
     }
 
-    IEnumerator LoadGameScene() {
+    IEnumerator LoadLevel1() {
         yield return new WaitForSeconds(btnClickTime);
-        // load level select scene
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
         yield return null;
     }
 }

@@ -5,26 +5,39 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Text = TMPro.TextMeshProUGUI;
 
+// TODO: 分數系統
+// TODO: 偵測全局靜止才setBird
+// TODO: Camera三狀態
+
 public class GameManagerV2 : MonoBehaviour
 {
     public static GameManagerV2 Instance;
+    // 發射相關
     public GameObject sp;
     public GameObject StillBird;
+    // UI相關
     public GameObject completePanel;
     public GameObject failedPanel;
     public GameObject optionBtn;
     public Text scoreText;
+    // 音效相關
     private AudioSource GMplayer;
     public AudioClip levelStart;
     public AudioClip levelClear;
     public AudioClip levelComplete;
     public AudioClip levelUnclear;
     public AudioClip levelFailed;
+    // 遊戲變數
     public int score = 0;
     private int totalScore = 0;
     public int remainingBirds = 3;
     public int level;
     public float panelRate = 3f;
+    private int cameraStatus = 0; 
+    // 0 鳥不在彈弓上且未發射
+    // 1 鳥在彈弓上但還沒射
+    // 2 鳥已經發射且為落地
+    // 3 鳥落地(3秒後變為0)
     public bool gameStatus;
     
     // Start is called before the first frame update
@@ -45,8 +58,11 @@ public class GameManagerV2 : MonoBehaviour
         GMplayer = GetComponent<AudioSource>();
         GMplayer.Play();
 
-        // 設置遊戲狀態為進行中
+        // 設置遊戲狀態為true
         gameStatus = true;
+
+        // 設置camera狀態為0
+        cameraStatus = 0;
 
         // 設置panel的scale為0
         completePanel.transform.localScale = Vector3.zero;
@@ -60,14 +76,6 @@ public class GameManagerV2 : MonoBehaviour
         totalScore += pigQuan * 10000;
         totalScore += remainingBirds * 5000;
         // TODO: totalScore += 加分物件數量 * 加分物件得分 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        // TODO: 分數系統
-        // TODO: 偵測全局靜止才setBird
-        // TODO: Camera三狀態
     }
 
     private void CheckGameStatus() 
@@ -136,6 +144,17 @@ public class GameManagerV2 : MonoBehaviour
         */
     }
 
+    public void setCameraStatus(int n) {
+        if(n > 3 || n < 0) {
+            Debug.Log("param doesn't corresponding");
+        }
+        cameraStatus = n;
+    }
+
+    public int getCameraStatus() {
+        return cameraStatus;
+    } 
+
     public void AddScore(int n) {
         score += n;
         scoreText.text = "SCORE: " + score;
@@ -153,6 +172,7 @@ public class GameManagerV2 : MonoBehaviour
         // 遊戲完成，顯示遊戲完成面板
         StartCoroutine(ShowPanel(completePanel));
         GMplayer.PlayOneShot(levelComplete);
+        PlayerPrefs.SetInt("levelUnlock", level-1);
     }
 
     private void LevelFailed() {

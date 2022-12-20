@@ -4,10 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class playBtn : MonoBehaviour
+public class level2 : MonoBehaviour
 {
     public AudioClip btnClick;
-    public AudioSource btnPlayer;
+    public AudioSource btnPlayer;s
     private float btnClickTime = 0.261f;
     // Start is called before the first frame update
     void Start()
@@ -17,15 +17,14 @@ public class playBtn : MonoBehaviour
     }
 
     private void startcoroutine() {
-        // 播放按鍵聲
         btnPlayer.PlayOneShot(btnClick);
-        StartCoroutine(LoadGameScene());
+        StartCoroutine(LoadLevel2());
     }
 
-    IEnumerator LoadGameScene() {
+    IEnumerator LoadLevel2() {
         yield return new WaitForSeconds(btnClickTime);
-        // load level select scene
-        SceneManager.LoadScene(1);
+        if(PlayerPrefs.GetInt("levelUnlock", 0) >= 2)
+            SceneManager.LoadScene(3);
         yield return null;
     }
 }

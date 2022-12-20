@@ -35,7 +35,7 @@ public class homeBtn : MonoBehaviour
         Time.timeScale = 0;
         
         // 改成home scene
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
         // 遊戲繼續
         Time.timeScale = 1;
         yield return null;
