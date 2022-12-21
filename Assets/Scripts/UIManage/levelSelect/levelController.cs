@@ -20,7 +20,8 @@ public class levelController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PlayerPrefs.SetInt("levelUnlock", 5);
+        // 非測試用拿掉下一行
+        //PlayerPrefs.SetInt("levelUnlock", 5);
         int levelUnlock = PlayerPrefs.GetInt("levelUnlock", 0);
         if(levelUnlock == 1) {
             level2.GetComponent<Image>().sprite = level2Lock;

@@ -14,6 +14,8 @@ public class playBtn : MonoBehaviour
     {
         btnPlayer = GetComponent<AudioSource>();
         GetComponent<Button>().onClick.AddListener(startcoroutine);
+        // 遊戲進入畫面時將關卡重置
+        PlayerPrefs.SetInt("levelUnlock", 1);
     }
 
     private void startcoroutine() {

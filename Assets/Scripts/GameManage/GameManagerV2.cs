@@ -172,7 +172,7 @@ public class GameManagerV2 : MonoBehaviour
         // 遊戲完成，顯示遊戲完成面板
         StartCoroutine(ShowPanel(completePanel));
         GMplayer.PlayOneShot(levelComplete);
-        PlayerPrefs.SetInt("levelUnlock", level-1);
+        PlayerPrefs.SetInt("levelUnlock", level);
     }
 
     private void LevelFailed() {

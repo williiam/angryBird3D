@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class level2 : MonoBehaviour
 {
     public AudioClip btnClick;
-    public AudioSource btnPlayer;s
+    public AudioSource btnPlayer;
     private float btnClickTime = 0.261f;
     // Start is called before the first frame update
     void Start()
