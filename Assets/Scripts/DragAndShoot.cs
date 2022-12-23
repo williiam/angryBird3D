@@ -6,6 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public class DragAndShoot : MonoBehaviour
 {
+    public GameObject hook;
     private AudioSource DASplayer;
     public AudioClip Slingshot;
     public AudioClip SlingshotRelease;
@@ -82,7 +83,8 @@ public class DragAndShoot : MonoBehaviour
     {
         yield return new WaitForSeconds(5f);
 
-        GameManagerV2.Instance.SetNewBird();
+        //GameManagerV2.Instance.SetNewBird();
+        hook.GetComponent<ShootController>().generateBird();
         // GameManagerV2.Instance.BirdDestroy.Play();
         // Instantiate(FeatherExplosion, transform.position, Quaternion.identity);
         Destroy(gameObject);

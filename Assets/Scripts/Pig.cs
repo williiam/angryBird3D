@@ -1,14 +1,24 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class Pig : MonoBehaviour
 {
     public GameObject Smoke;
+    public GameObject gameManager;
 
-    void OnCollisionEnter(Collision collision)
+    void OnCollisionEnter(Collision other)
     {
-        if (collision.relativeVelocity.magnitude > 5f)
+        if (other.relativeVelocity.magnitude > 5f)
         {
             Destroy();
+            if(other.gameObject.tag == "Bird") {
+                gameManager.GetComponent<GameManagerV2>().AddScore(10000);
+                Debug.Log("add 10000");
+            } else {
+                gameManager.GetComponent<GameManagerV2>().AddScore(8000);
+                Debug.Log("add 8000");
+            }
         }
     }
 

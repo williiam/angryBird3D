@@ -39,11 +39,11 @@ public class TrajectoryDrawer : MonoBehaviour
                 velocity.z * stepTimePassed
             );
             Vector3 newPointOnLine =  -MovementVector + startingPoint;
-            RaycastHit hit;
-            if(Physics.Raycast(_linePoints[i - 1], newPointOnLine - _linePoints[i - 1], out hit, (newPointOnLine - _linePoints[i - 1]).magnitude)) {
-                _linePoints.Add(hit.point);
-                break;
-            }
+            // RaycastHit hit;
+            // if(Physics.Raycast(_linePoints[i - 1], newPointOnLine - _linePoints[i - 1], out hit, (newPointOnLine - _linePoints[i - 1]).magnitude)) {
+            //     _linePoints.Add(hit.point);
+            //     break;
+            // }
             _linePoints.Add(newPointOnLine);
         }
         
