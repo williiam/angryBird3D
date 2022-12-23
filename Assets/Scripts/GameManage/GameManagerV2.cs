@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManagerV2 : MonoBehaviour
-{
+{jkhjkh
 
     public static GameManagerV2 Instance;
     public GameObject sp;
