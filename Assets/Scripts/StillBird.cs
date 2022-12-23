@@ -16,6 +16,10 @@ public class StillBird : MonoBehaviour
 
         GetComponent<Animator>().enabled = true;
     }
+
+    // onClick event
+    
+
 }
 
 // q: what is  the english of 彈弓

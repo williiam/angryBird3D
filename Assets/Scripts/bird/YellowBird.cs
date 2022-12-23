@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bird : MonoBehaviour
+public class YellowBird : MonoBehaviour
 {
     public Rigidbody Rb;
     public GameObject Feathers;
@@ -23,6 +23,11 @@ public class Bird : MonoBehaviour
 
     void Start() {
         BirdPlayer = GetComponent<AudioSource>();
+    }
+
+    void castSkill() {
+        // 使此鳥往前衝刺
+        Rb.AddForce(transform.forward * 1000);
     }
 
     // void FixedUpdate()
@@ -85,22 +90,4 @@ public class Bird : MonoBehaviour
             }
         }
     }
-
-    // IEnumerator Release()
-    // {
-    //     yield return new WaitForSeconds(ReleaseTime);
-
-    //     Destroy(GetComponent<SpringJoint>());
-    //     StartCoroutine(Explode());
-    // }
-
-    // IEnumerator Explode()
-    // {
-    //     yield return new WaitForSeconds(DestructionTime);
-
-    //     GameManagerV2.Instance.SetNewBird();
-    //     // GameManagerV2.Instance.BirdDestroy.Play();
-    //     Instantiate(FeatherExplosion, transform.position, Quaternion.identity);
-    //     Destroy(gameObject);
-    // }
 }
