@@ -9,10 +9,12 @@ public class level4 : MonoBehaviour
     public AudioClip btnClick;
     public AudioSource btnPlayer;
     private float btnClickTime = 0.261f;
+    private GameObject bgm;
     // Start is called before the first frame update
     void Start()
     {
         btnPlayer = GetComponent<AudioSource>();
+        bgm = GameObject.FindWithTag("bgm");
         GetComponent<Button>().onClick.AddListener(startcoroutine);
     }
 
@@ -23,8 +25,10 @@ public class level4 : MonoBehaviour
 
     IEnumerator LoadLevel4() {
         yield return new WaitForSeconds(btnClickTime);
-        if(PlayerPrefs.GetInt("levelUnlock", 0) >= 4)
+        if(PlayerPrefs.GetInt("levelUnlock", 0) >= 4) {
+            bgm.GetComponent<AudioSource>().Stop();
             SceneManager.LoadScene(5);
+        }
         yield return null;
     }
 }
