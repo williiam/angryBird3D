@@ -14,12 +14,8 @@ public class playBtn : MonoBehaviour
     {
         btnPlayer = GetComponent<AudioSource>();
         GetComponent<Button>().onClick.AddListener(startcoroutine);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        // 遊戲進入畫面時將關卡重置
+        PlayerPrefs.SetInt("levelUnlock", 1);
     }
 
     private void startcoroutine() {
@@ -29,8 +25,8 @@ public class playBtn : MonoBehaviour
     }
 
     IEnumerator LoadGameScene() {
-        //yield return new WaitForSeconds(btnClickTime);
-        // load game scene
+        yield return new WaitForSeconds(btnClickTime);
+        // load level select scene
         SceneManager.LoadScene(1);
         yield return null;
     }

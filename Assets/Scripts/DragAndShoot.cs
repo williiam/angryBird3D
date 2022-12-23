@@ -6,6 +6,11 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public class DragAndShoot : MonoBehaviour
 {
+    private AudioSource DASplayer;
+    public AudioClip Slingshot;
+    public AudioClip SlingshotRelease;
+    public AudioClip Flying;
+    public AudioClip BirdCollision;
     private Vector3 mousePressDownPos;
     private Vector3 mouseReleasePos;
 
@@ -20,6 +25,7 @@ public class DragAndShoot : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        DASplayer = GetComponent<AudioSource>();
         startPosition = transform.position;
     }
 
@@ -33,11 +39,13 @@ public class DragAndShoot : MonoBehaviour
 
     void OnMouseDown()
     {
+        DASplayer.PlayOneShot(Slingshot);
         mousePressDownPos = Input.mousePosition;
     }
 
     void OnMouseUp()
     {
+        DASplayer.PlayOneShot(SlingshotRelease);
         mouseReleasePos = Input.mousePosition;
         Shoot(mouseReleasePos-mousePressDownPos);
     }
@@ -48,8 +56,10 @@ public class DragAndShoot : MonoBehaviour
 
         if(!isShoot) TrajectoryDrawer.Instance.UpdateTrajectory(forceV, rb, transform.position);
     }
+
     void Shoot(Vector3 Force)
     {
+        DASplayer.PlayOneShot(Flying);
         if(isShoot)    
             return;
         

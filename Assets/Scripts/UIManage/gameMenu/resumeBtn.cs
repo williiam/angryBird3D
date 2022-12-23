@@ -11,7 +11,7 @@ public class resumeBtn : MonoBehaviour
     public AudioSource btnPlayer;
     public GameObject gameManager;
     public AudioSource GMplayer;
-    private float menuRate = 3f;
+    private float menuRate = 1f;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,15 +36,15 @@ public class resumeBtn : MonoBehaviour
     }
 
     IEnumerator HideGameMenu() {
-        // 遊戲繼續
-        Time.timeScale = 1;
         // 漸縮小面板
         float timer = 0f;
         while(timer < 1f) {
             gameMenu.transform.localScale = new Vector3(0.3f - (timer * 0.3f), 1.8f - (timer * 1.8f) , 0f);
-            timer += Time.deltaTime * menuRate;
+            timer += Time.fixedUnscaledDeltaTime * menuRate;
             yield return null;
         }
+        // 遊戲繼續
+        Time.timeScale = 1;
         // 顯示optionBtn
         optionBtn.transform.localScale = new Vector3(0.6f, 3f, 0f);   // initial is 0.6, 3, 1
     }
