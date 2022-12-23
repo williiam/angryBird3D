@@ -10,10 +10,10 @@ public class ShootController : MonoBehaviour
     private GameObject Bird;
 
     [SerializeField]
-    private Transform LeftPoint;
+    private GameObject LeftPoint;
 
     [SerializeField]
-    private Transform RightPoint;
+    private GameObject RightPoint;
 
     [SerializeField]
     private LineRenderer ShootLine;
@@ -27,52 +27,64 @@ public class ShootController : MonoBehaviour
 
     private GameObject bird;
 
-    private bool isShoot = false;
-    private float forceMultiplier = 3;
+    // stage 0: 還沒發射, stage 1: dragging, stage2: 射出去了
+    private int stage = 0;
+    private float forceMultiplier = 9;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        ShootLine.positionCount = 3;
         startPosition = transform.position;
         generateBird();
+        ShootLine.positionCount = 3;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        ShootLine.SetPosition(0, LeftPoint.position);
-        ShootLine.SetPosition(1, transform.position);
-        ShootLine.SetPosition(2, RightPoint.position);
+        if(stage == 0 || stage == 1) {
+            ShootLine.SetPosition(0, LeftPoint.transform.position);
+            ShootLine.SetPosition(1, bird.transform.position);
+            ShootLine.SetPosition(2, RightPoint.transform.position);
+            bird.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        }
+        
+        if(stage == 0) {
+            bird.transform.position = startPosition;
+        }
     }
 
     void OnMouseDown()
     {
         mousePressDownPos = Input.mousePosition;
+        stage = 1;
     }
 
     void OnMouseUp()
     {
+        stage = 2;
         mouseReleasePos = Input.mousePosition;
-        Shoot(mouseReleasePos-mousePressDownPos);
+        Shoot(mousePressDownPos - mouseReleasePos);
     }
 
     void OnMouseDrag() {
         Vector3 forceInit = (Input.mousePosition - mousePressDownPos);
         Vector3 forceV = (new Vector3(forceInit.x, forceInit.y, forceInit.y)) * forceMultiplier;
+        Vector3 newPos = ( new Vector3(forceInit.x, forceInit.y, forceInit.y) / rb.mass ) * Time.fixedDeltaTime;
+    
+        if(stage == 1) bird.transform.position = startPosition + newPos;
 
-        if(!isShoot) TrajectoryDrawer.Instance.UpdateTrajectory(forceV, rb, transform.position);
+        Rigidbody _rb = bird.GetComponent<Rigidbody>();
+        TrajectoryDrawer.Instance.UpdateTrajectory(forceV, _rb, startPosition + newPos);
     }
 
     void Shoot(Vector3 Force)
     {
-        if(isShoot)    
-            return;
-        
-        Vector3 force = new Vector3(Force.x, Force.y, Force.y);
-        rb.AddForce(force * forceMultiplier );
-        isShoot = true;
+        Rigidbody _rb = bird.GetComponent<Rigidbody>();
+        Vector3 force = new Vector3(Force.x, Force.y, Force.y) * forceMultiplier;
+        _rb.AddForce(force);
         TrajectoryDrawer.Instance.ClearTrajectory();
     }
 
