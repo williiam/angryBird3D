@@ -344,6 +344,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2458419986179236128, guid: 85aafada88133d441be71e1c112c1c5e, type: 3}
   m_PrefabInstance: {fileID: 2458419986778724460}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &760452156 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5498838429821139930, guid: 075b373e9887c44e095f7c3d2135ee22, type: 3}
+  m_PrefabInstance: {fileID: 803921067}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &803921067
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -405,6 +410,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 075b373e9887c44e095f7c3d2135ee22, type: 3}
+--- !u!1 &1903752647 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9131972807194717904, guid: 075b373e9887c44e095f7c3d2135ee22, type: 3}
+  m_PrefabInstance: {fileID: 803921067}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1424170230262634729
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -690,7 +700,7 @@ PrefabInstance:
     - target: {fileID: 3403600621626056902, guid: 7de7fd860aeb9934284a3071aa265a7e, type: 3}
       propertyPath: Slingshot
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 760452156}
     - target: {fileID: 4173589663944657298, guid: 7de7fd860aeb9934284a3071aa265a7e, type: 3}
       propertyPath: m_Name
       value: Main Camera
@@ -755,7 +765,11 @@ PrefabInstance:
     - target: {fileID: 8778617142559021190, guid: 1b3595143ad15024b885340e632f29f6, type: 3}
       propertyPath: sp
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1903752647}
+    - target: {fileID: 8778617142559021190, guid: 1b3595143ad15024b885340e632f29f6, type: 3}
+      propertyPath: hook
+      value: 
+      objectReference: {fileID: 1903752647}
     - target: {fileID: 8778617142559021190, guid: 1b3595143ad15024b885340e632f29f6, type: 3}
       propertyPath: optionBtn
       value: 

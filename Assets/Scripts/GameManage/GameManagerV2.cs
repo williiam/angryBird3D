@@ -13,7 +13,7 @@ public class GameManagerV2 : MonoBehaviour
 {
     public static GameManagerV2 Instance;
     // 發射相關
-    public GameObject sp;
+    public GameObject hook;
     public GameObject StillBird;
     // UI相關
     public GameObject completePanel;
@@ -69,7 +69,7 @@ public class GameManagerV2 : MonoBehaviour
         failedPanel.transform.localScale = Vector3.zero;
 
         // 設置待命鳥
-        SetNewBird();
+        hook.GetComponent<ShootController>().generateBird();
 
         // 先計算出關卡總分
         int pigQuan = GameObject.FindGameObjectsWithTag("Pig").Length;
@@ -218,6 +218,7 @@ public class GameManagerV2 : MonoBehaviour
         Time.timeScale = 0;
     }
 
+    /*
     public void SetNewBird()
     {
         // 先檢查遊戲狀態,若非進行中則return
@@ -228,7 +229,7 @@ public class GameManagerV2 : MonoBehaviour
         remainingBirds--;
         if (remainingBirds >= 0)
         {
-            sp.GetComponent<shootPointController>().setNewBird();
+            sp.GetComponent<ShootController>().generateBird();
             // 刪除所有待命鳥
             foreach (StillBird stillBird in FindObjectsOfType<StillBird>())
             {
@@ -249,4 +250,5 @@ public class GameManagerV2 : MonoBehaviour
             }
         }
     }
+    */
 }
