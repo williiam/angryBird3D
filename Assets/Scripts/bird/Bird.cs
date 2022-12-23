@@ -25,7 +25,7 @@ public class Bird : MonoBehaviour
         BirdPlayer = GetComponent<AudioSource>();
     }
 
-    void castSkill() {
+    public void castSkill() {
         Rb.AddForce(transform.forward * 1000);
     }
 

@@ -5,9 +5,11 @@ using UnityEngine.UI;
 
 public class skillBtn : MonoBehaviour
 {
+
+    public Bird curShootingBird;
     public void onClick(){
         // 使當前飛行鳥放招
-        GameObject curShootingBird = GetComponent<Bird>();
+        curShootingBird = GetComponent<Bird>();
         curShootingBird.castSkill();
     }
 }
