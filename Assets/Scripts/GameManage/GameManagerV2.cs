@@ -3,24 +3,41 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Text = TMPro.TextMeshProUGUI;
+
+// TODO: 分數系統
+// TODO: 偵測全局靜止才setBird
+// TODO: Camera三狀態
 
 public class GameManagerV2 : MonoBehaviour
 {
     public static GameManagerV2 Instance;
+    // 發射相關
     public GameObject sp;
     public GameObject StillBird;
+    // UI相關
     public GameObject completePanel;
     public GameObject failedPanel;
     public GameObject optionBtn;
+    public Text scoreText;
+    // 音效相關
     private AudioSource GMplayer;
     public AudioClip levelStart;
     public AudioClip levelClear;
     public AudioClip levelComplete;
     public AudioClip levelUnclear;
     public AudioClip levelFailed;
+    // 遊戲變數
+    public int score = 0;
+    private int totalScore = 0;
     public int remainingBirds = 3;
     public int level;
     public float panelRate = 3f;
+    private int cameraStatus = 0; 
+    // 0 鳥不在彈弓上且未發射
+    // 1 鳥在彈弓上但還沒射
+    // 2 鳥已經發射且為落地
+    // 3 鳥落地(3秒後變為0)
     public bool gameStatus;
     
     // Start is called before the first frame update
@@ -33,12 +50,19 @@ public class GameManagerV2 : MonoBehaviour
         // 獲得當前關卡index
         level = SceneManager.GetActiveScene().buildIndex;
         
+        // 禁用complete panel和failed panel
+        completePanel.SetActive(false);
+        failedPanel.SetActive(false);
+
         // 播放遊戲音樂
         GMplayer = GetComponent<AudioSource>();
         GMplayer.Play();
 
-        // 設置遊戲狀態為進行中
+        // 設置遊戲狀態為true
         gameStatus = true;
+
+        // 設置camera狀態為0
+        cameraStatus = 0;
 
         // 設置panel的scale為0
         completePanel.transform.localScale = Vector3.zero;
@@ -46,13 +70,12 @@ public class GameManagerV2 : MonoBehaviour
 
         // 設置待命鳥
         SetNewBird();
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        // TODO: 分數系統
-        // TODO: 偵測全局靜止才setBird
+        // 先計算出關卡總分
+        int pigQuan = GameObject.FindGameObjectsWithTag("Pig").Length;
+        totalScore += pigQuan * 10000;
+        totalScore += remainingBirds * 5000;
+        // TODO: totalScore += 加分物件數量 * 加分物件得分 
     }
 
     private void CheckGameStatus() 
@@ -67,9 +90,15 @@ public class GameManagerV2 : MonoBehaviour
         // 如果沒有豬則遊戲通關
         if(remainingPigs == 0) {
             gameStatus = false;
+            // 剩餘的鳥每隻+5000分
+            for(int i = 0; i < remainingBirds; ++i) {
+                AddScore(5000);
+            }
             // 停止遊戲音樂，播放通關音效
             GMplayer.Stop();
             GMplayer.PlayOneShot(levelClear);
+            // 隱藏optionBtn
+            optionBtn.transform.localScale = Vector3.zero;
             Invoke("LevelComplete", 5.112f);    // levelClear is 5.112sec
         }
 
@@ -79,6 +108,8 @@ public class GameManagerV2 : MonoBehaviour
             // 停止遊戲音樂，播放失敗音效
             GMplayer.Stop();
             GMplayer.PlayOneShot(levelUnclear); // levelUnclear is 4.716sec
+            // 隱藏optionBtn
+            optionBtn.transform.localScale = Vector3.zero;
             Invoke("LevelFailed", 4.716f);
         }
 
@@ -113,10 +144,35 @@ public class GameManagerV2 : MonoBehaviour
         */
     }
 
+    public void setCameraStatus(int n) {
+        if(n > 3 || n < 0) {
+            Debug.Log("param doesn't corresponding");
+        }
+        cameraStatus = n;
+    }
+
+    public int getCameraStatus() {
+        return cameraStatus;
+    } 
+
+    public void AddScore(int n) {
+        score += n;
+        scoreText.text = "SCORE: " + score;
+    }
+
+    public int GetScore() {
+        return score;
+    }
+
+    public int GetTotalScore() {
+        return totalScore;
+    }
+
     private void LevelComplete() {
         // 遊戲完成，顯示遊戲完成面板
         StartCoroutine(ShowPanel(completePanel));
         GMplayer.PlayOneShot(levelComplete);
+        PlayerPrefs.SetInt("levelUnlock", level);
     }
 
     private void LevelFailed() {
@@ -126,14 +182,24 @@ public class GameManagerV2 : MonoBehaviour
     }
 
     IEnumerator ShowPanel(GameObject panel) {
-        // 隱藏optionBtn
-        optionBtn.transform.localScale = Vector3.zero;
+        // 隱藏scoreText
+        scoreText.transform.localScale = Vector3.zero;
+        // enable panel
+        panel.SetActive(true);
         // 漸放大面板
         float timer = 0f;
         while(timer < 1f) {
             panel.transform.localScale = new Vector3(timer, timer * 1.5f, 0);
             timer += Time.deltaTime * panelRate;
             yield return null;
+        }
+        // 如果panel是completePanel,則觸發星星的動畫
+        if(panel.GetComponent<starController>()) {
+            panel.GetComponent<starController>().startcoroutine();
+        }
+        // 否則觸發豬的動畫
+        else if(panel.GetComponent<pigController>()) {
+            panel.GetComponent<pigController>().startcoroutine();
         }
         // 遊戲暫停
         Time.timeScale = 0;
@@ -147,6 +213,7 @@ public class GameManagerV2 : MonoBehaviour
             timer += Time.deltaTime * panelRate;
             yield return null;
         }
+        panel.SetActive(false);
         // 遊戲暫停
         Time.timeScale = 0;
     }
