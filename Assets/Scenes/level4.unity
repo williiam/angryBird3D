@@ -146,6 +146,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1613305011452252635, guid: ff961dc843969c9439de293211f3752e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.079742
+      objectReference: {fileID: 0}
+    - target: {fileID: 2333888363864497847, guid: ff961dc843969c9439de293211f3752e, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 7703912328593088717}
     - target: {fileID: 2505450647485244321, guid: ff961dc843969c9439de293211f3752e, type: 3}
       propertyPath: m_RootOrder
       value: 3
