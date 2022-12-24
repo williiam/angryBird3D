@@ -84,7 +84,7 @@ public class DragAndShoot : MonoBehaviour
         yield return new WaitForSeconds(5f);
 
         //GameManagerV2.Instance.SetNewBird();
-        hook.GetComponent<ShootController>().generateBird();
+        // hook.GetComponent<ShootController>().generateBird();
         // GameManagerV2.Instance.BirdDestroy.Play();
         // Instantiate(FeatherExplosion, transform.position, Quaternion.identity);
         Destroy(gameObject);

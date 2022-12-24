@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bird : MonoBehaviour
+public class OldBird : MonoBehaviour
 {
     public Rigidbody Rb;
     public GameObject Feathers;
     public GameObject FeatherExplosion;
+    public BirdManager birdManager;
     /*
     public AudioClip Slingshot;
     public AudioClip SlingshotRelease;
@@ -107,4 +108,7 @@ public class Bird : MonoBehaviour
     //     Instantiate(FeatherExplosion, transform.position, Quaternion.identity);
     //     Destroy(gameObject);
     // }
+    virtual public void CastSpell() {
+        Debug.Log("123");
+    }
 }

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class skillBtn : MonoBehaviour
 {
-    public Bird curShootingBird;
+    BirdManager birdManager;
 
     // Start is called before the first frame update
     void Start()
@@ -14,15 +14,7 @@ public class skillBtn : MonoBehaviour
     }
 
     public void onClick(){
-        // 使當前飛行鳥放招
-        Bird curShootingBird = (Bird)FindObjectOfType(typeof(Bird));
-        if(curShootingBird == null) {
-            Debug.Log("No bird found!");
-            return;
-        }
-        else{
-            curShootingBird.castSkill();
-        }
+        birdManager.CastSpell();
     }
 }
 

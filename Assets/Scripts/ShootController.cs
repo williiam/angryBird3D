@@ -25,7 +25,7 @@ public class ShootController : MonoBehaviour
 
     private Rigidbody rb;
 
-    private GameObject bird;
+    private BaseBird bird;
 
     // stage 0: 還沒發射, stage 1: dragging, stage2: 射出去了
     private int stage = 0;
@@ -36,7 +36,7 @@ public class ShootController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         startPosition = transform.position;
-        generateBird();
+        // generateBird();
         ShootLine.positionCount = 3;
         
     }
@@ -44,6 +44,10 @@ public class ShootController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        bird = BirdManager.Instance.GetCurrentBird();
+        if(bird==null){
+            return;
+        }
         if(stage == 0 || stage == 1) {
             ShootLine.SetPosition(0, LeftPoint.transform.position);
             ShootLine.SetPosition(1, bird.transform.position);
@@ -86,9 +90,5 @@ public class ShootController : MonoBehaviour
         Vector3 force = new Vector3(Force.x, Force.y, Force.y) * forceMultiplier;
         _rb.AddForce(force);
         TrajectoryDrawer.Instance.ClearTrajectory();
-    }
-
-    public void generateBird() {
-        bird = Instantiate(Bird, transform.position, Quaternion.identity);
     }
 }

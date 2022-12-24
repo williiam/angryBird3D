@@ -69,7 +69,7 @@ public class GameManagerV2 : MonoBehaviour
         failedPanel.transform.localScale = Vector3.zero;
 
         // 設置待命鳥
-        hook.GetComponent<ShootController>().generateBird();
+        // hook.GetComponent<ShootController>().generateBird();
 
         // 先計算出關卡總分
         int pigQuan = GameObject.FindGameObjectsWithTag("Pig").Length;

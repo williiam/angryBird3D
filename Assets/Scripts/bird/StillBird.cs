@@ -18,9 +18,7 @@ public class StillBird : MonoBehaviour
     }
 
     // onClick event
-    
+    // 點擊後，使在彈弓上生成一隻當前種類的待射鳥
+    // birdManager
 
 }
-
-// q: what is  the english of 彈弓
-
