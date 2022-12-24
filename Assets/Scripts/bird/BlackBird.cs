@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class YellowBird : BaseBird
+public class BlackBird : BaseBird
 {
-
    public override void CastSpell(){
-        Rb.AddForce(transform.forward * 1000);
+        // 使此鳥爆炸
+        Instantiate(FeatherExplosion, transform.position, Quaternion.identity);
    }
 
    // onClick
@@ -14,9 +14,9 @@ public class YellowBird : BaseBird
     private void OnMouseDown()
     {
         var bird = BirdManager.Instance.GetCurrentBird();
-        if(bird!=null&&bird.GetType()== typeof(YellowBird)){
+        if(bird!=null&&bird.GetType()== typeof(BlackBird)){
             return;
         }
-        BirdManager.Instance.SetCurrentBird("yellow");
+        BirdManager.Instance.SetCurrentBird("black");
     }
 }

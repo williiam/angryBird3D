@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class skillBtn : MonoBehaviour
 {
-    BirdManager birdManager;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -14,7 +12,11 @@ public class skillBtn : MonoBehaviour
     }
 
     public void onClick(){
-        birdManager.CastSpell();
+        int stage = ShootController.Instance.GetStage();
+        if(stage == 0 || stage == 1) {
+            return;
+        }
+        BirdManager.Instance.CastSpell();
     }
 }
 

@@ -5,7 +5,7 @@ public class BirdManager : MonoBehaviour
 {
 
     public static BirdManager Instance;
-    public BaseBird currentBird;
+    private BaseBird currentBird;
 
     public BaseBird redBird;
     public BaseBird yellowBird;
@@ -15,6 +15,10 @@ public class BirdManager : MonoBehaviour
 
     void Awake()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
     }
     void Start()
     {
@@ -31,9 +35,13 @@ public class BirdManager : MonoBehaviour
 
     public void SetCurrentBird(string type)
     {
-        // 生成一隻當前種類的待射鳥
-        Destroy(currentBird);
-        BaseBird bird = (BaseBird)getBirdByType(type);
+        if (currentBird != null)
+        {
+            Destroy(currentBird.gameObject);
+        }
+        ShootController.Instance.SetStage(0);
+        BaseBird bird = (BaseBird)getBirdPrefab(type);
+        // 生成一隻鳥，使其在彈弓上
         currentBird = Instantiate(bird, transform.position, Quaternion.identity);
     }
 
@@ -44,7 +52,7 @@ public class BirdManager : MonoBehaviour
 
     // onClick event
 
-    private BaseBird getBirdByType(string type)
+    private BaseBird getBirdPrefab(string type)
     {
         switch(type)
         {

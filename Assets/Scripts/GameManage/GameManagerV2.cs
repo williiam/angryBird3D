@@ -78,7 +78,7 @@ public class GameManagerV2 : MonoBehaviour
         // TODO: totalScore += 加分物件數量 * 加分物件得分 
     }
 
-    private void CheckGameStatus() 
+    public void CheckGameStatus() 
     {
         int remainingPigs = 0;
 

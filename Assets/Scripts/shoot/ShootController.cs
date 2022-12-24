@@ -6,6 +6,8 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public class ShootController : MonoBehaviour
 {
+    public static ShootController Instance;
+
     [SerializeField]
     private GameObject Bird;
 
@@ -27,10 +29,17 @@ public class ShootController : MonoBehaviour
 
     private BaseBird bird;
 
-    // stage 0: 還沒發射, stage 1: dragging, stage2: 射出去了
+    // stage 0: 還沒發射, stage 1: dragging, stage2: 射出去了🥵
     private int stage = 0;
     private float forceMultiplier = 9;
 
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -62,6 +71,10 @@ public class ShootController : MonoBehaviour
 
     void OnMouseDown()
     {
+        bird = BirdManager.Instance.GetCurrentBird();
+        if(bird==null){
+            return;
+        }
         mousePressDownPos = Input.mousePosition;
         stage = 1;
     }
@@ -90,5 +103,18 @@ public class ShootController : MonoBehaviour
         Vector3 force = new Vector3(Force.x, Force.y, Force.y) * forceMultiplier;
         _rb.AddForce(force);
         TrajectoryDrawer.Instance.ClearTrajectory();
+        bird.Release();
+    }
+
+    // public methods
+    public int GetStage()
+    {
+        return stage;
+    }
+
+    public int SetStage(int newStage)
+    {
+        stage = newStage;
+        return stage;
     }
 }

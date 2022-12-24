@@ -307,6 +307,7 @@ GameObject:
   - component: {fileID: 319142698625756920}
   - component: {fileID: 1803911474483974399}
   - component: {fileID: 1107499861358865267}
+  - component: {fileID: 2129724467118983926}
   m_Layer: 0
   m_Name: Hook
   m_TagString: Untagged
@@ -374,3 +375,20 @@ MonoBehaviour:
   LeftPoint: {fileID: 3655573877698061348}
   RightPoint: {fileID: 1153398235730631203}
   ShootLine: {fileID: 2432117410525301678}
+--- !u!114 &2129724467118983926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9131972807194717904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f7878f5530e1428e8402bfc27c43f4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redBird: {fileID: 8722709293629901678, guid: 0b36a86d6e01c40adb5a886868f2ff88, type: 3}
+  yellowBird: {fileID: 1713068003485239262, guid: 16421dd3afd6c4040850a7f459d20cdd, type: 3}
+  blueBird: {fileID: 6601348660417787829, guid: 4eb80e7bafff5462e979855111150c45, type: 3}
+  blackBird: {fileID: 2594683776963910047, guid: 8407bb5ab9ca6492dbbf1beb9738f484, type: 3}
+  pinkBird: {fileID: 8722709293629901678, guid: 0b36a86d6e01c40adb5a886868f2ff88, type: 3}
