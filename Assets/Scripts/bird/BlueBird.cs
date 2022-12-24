@@ -5,6 +5,7 @@ using UnityEngine;
 public class BlueBird : BaseBird
 {
    public BaseBird splitBird;
+
    public override void CastSpell(){
        //分裂
        Instantiate(splitBird, transform.position, transform.rotation);
@@ -21,5 +22,15 @@ public class BlueBird : BaseBird
             return;
         }
         BirdManager.Instance.SetCurrentBird("blue");
+    }
+
+    public override void OnCollisionEnter(Collision collision)
+    {
+        GameObject feathers = Instantiate(Feathers, transform.position, Quaternion.identity);
+        Destroy(feathers, 2);
+        if (!BirdPlayer.isPlaying)
+        {
+            BirdPlayer.PlayOneShot(BirdCollision);
+        }
     }
 }
