@@ -499,15 +499,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3703089690216133946, guid: 07c412bc21bb1467dbba12d6c6bb696a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.518302
+      value: -0.6
       objectReference: {fileID: 0}
     - target: {fileID: 3703089690216133946, guid: 07c412bc21bb1467dbba12d6c6bb696a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -8.639129
+      value: 2.7
       objectReference: {fileID: 0}
     - target: {fileID: 3703089690216133946, guid: 07c412bc21bb1467dbba12d6c6bb696a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 15.67267
+      value: -24
       objectReference: {fileID: 0}
     - target: {fileID: 3703089690216133946, guid: 07c412bc21bb1467dbba12d6c6bb696a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -541,7 +541,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wood Shatter
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2194966256715579376, guid: 07c412bc21bb1467dbba12d6c6bb696a, type: 3}
+    - {fileID: 5356142321335565509, guid: 07c412bc21bb1467dbba12d6c6bb696a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 07c412bc21bb1467dbba12d6c6bb696a, type: 3}
 --- !u!4 &2808571226062009277 stripped
 Transform:
