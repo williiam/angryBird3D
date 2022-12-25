@@ -30,7 +30,6 @@ public class ShootController : MonoBehaviour
     private BaseBird bird;
 
     // stage 0: 還沒發射, stage 1: dragging, stage2: 射出去了🥵
-    private int stage = 0;
     private float forceMultiplier = 9;
 
     void Awake()
@@ -53,6 +52,7 @@ public class ShootController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        int stage = GameManagerV2.Instance.getCameraStatus();
         bird = BirdManager.Instance.GetCurrentBird();
         if(bird==null){
             return;
@@ -76,25 +76,26 @@ public class ShootController : MonoBehaviour
             return;
         }
         mousePressDownPos = Input.mousePosition;
-        stage = 1;
+        SetStage(1);
     }
 
     void OnMouseUp()
     {
-        stage = 2;
+         SetStage(2);
         mouseReleasePos = Input.mousePosition;
         Shoot(mousePressDownPos - mouseReleasePos);
     }
 
     void OnMouseDrag() {
+        int stage = GameManagerV2.Instance.getCameraStatus();
         Vector3 forceInit = (Input.mousePosition - mousePressDownPos);
         Vector3 forceV = (new Vector3(forceInit.x, forceInit.y, forceInit.y)) * forceMultiplier;
-        Vector3 newPos = ( new Vector3(forceInit.x, forceInit.y, forceInit.y) / rb.mass ) * Time.fixedDeltaTime;
-    
-        if(stage == 1) bird.transform.position = startPosition + newPos;
+        Vector3 newPos = startPosition + (( new Vector3(forceInit.x, forceInit.y, forceInit.y) / rb.mass ) * Time.fixedDeltaTime);
+        if(newPos.y < 1) newPos.y = 1;
+        if(stage == 1) bird.transform.position = newPos;
 
         Rigidbody _rb = bird.GetComponent<Rigidbody>();
-        TrajectoryDrawer.Instance.UpdateTrajectory(forceV, _rb, startPosition + newPos);
+        TrajectoryDrawer.Instance.UpdateTrajectory(forceV, _rb, newPos);
     }
 
     void Shoot(Vector3 Force)
@@ -109,12 +110,12 @@ public class ShootController : MonoBehaviour
     // public methods
     public int GetStage()
     {
-        return stage;
+        return GameManagerV2.Instance.getCameraStatus();;
     }
 
     public int SetStage(int newStage)
     {
-        stage = newStage;
-        return stage;
+        GameManagerV2.Instance.setCameraStatus(newStage);
+        return newStage;
     }
 }
