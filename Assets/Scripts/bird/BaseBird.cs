@@ -9,7 +9,7 @@ public class BaseBird : MonoBehaviour
     public GameObject FeatherExplosion;
     public BirdManager birdManager;
     public AudioClip BirdCollision;
-    private AudioSource BirdPlayer;
+    public AudioSource BirdPlayer;
     public float ReleaseTime = 0.5f;
     public float DestructionTime = 5f;
 
@@ -28,7 +28,7 @@ public class BaseBird : MonoBehaviour
         Rb.AddForce(transform.forward * 1000);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public virtual void OnCollisionEnter(Collision collision)
     {
         if (!collision.collider.CompareTag("Ground"))
         {
