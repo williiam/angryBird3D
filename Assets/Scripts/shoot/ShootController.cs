@@ -45,7 +45,6 @@ public class ShootController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         startPosition = transform.position;
         // generateBird();
-        ShootLine.positionCount = 3;
         
     }
 
@@ -58,10 +57,17 @@ public class ShootController : MonoBehaviour
             return;
         }
         if(stage == 0 || stage == 1) {
+            ShootLine.positionCount = 3;
             ShootLine.SetPosition(0, LeftPoint.transform.position);
             ShootLine.SetPosition(1, bird.transform.position);
             ShootLine.SetPosition(2, RightPoint.transform.position);
             bird.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        }
+
+        if(stage == 2) {
+            ShootLine.positionCount = 2;
+            ShootLine.SetPosition(0, LeftPoint.transform.position);
+            ShootLine.SetPosition(1, RightPoint.transform.position);
         }
         
         if(stage == 0) {
