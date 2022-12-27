@@ -26,6 +26,7 @@ public class level1 : MonoBehaviour
     IEnumerator LoadLevel1() {
         yield return new WaitForSeconds(btnClickTime);
         bgm.GetComponent<AudioSource>().Stop();
+        Debug.Log("Stop bgm");
         SceneManager.LoadScene(2);
         yield return null;
     }

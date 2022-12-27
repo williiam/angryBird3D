@@ -17,6 +17,7 @@ public class levelController : MonoBehaviour
     public Sprite level3Unlock;
     public Sprite level4Unlock;
     public Sprite level5Unlock;
+    private GameObject bgm;
     // Start is called before the first frame update
     void Start()
     {
