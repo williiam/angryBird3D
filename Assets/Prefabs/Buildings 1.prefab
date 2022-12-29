@@ -113,6 +113,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wooden Block
       objectReference: {fileID: 0}
+    - target: {fileID: 7428645006852782802, guid: e9f149b59f95c4261b5866b581932585, type: 3}
+      propertyPath: m_TagString
+      value: Building
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9f149b59f95c4261b5866b581932585, type: 3}
 --- !u!4 &857055348754124841 stripped
@@ -174,6 +178,10 @@ PrefabInstance:
     - target: {fileID: 5993704297489910061, guid: e7ad7e3f836b843ddadc2112ca8a5b50, type: 3}
       propertyPath: m_Name
       value: Ice Block
+      objectReference: {fileID: 0}
+    - target: {fileID: 5993704297489910061, guid: e7ad7e3f836b843ddadc2112ca8a5b50, type: 3}
+      propertyPath: m_TagString
+      value: Building
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7ad7e3f836b843ddadc2112ca8a5b50, type: 3}
@@ -241,6 +249,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wooden Block
       objectReference: {fileID: 0}
+    - target: {fileID: 7428645006852782802, guid: e9f149b59f95c4261b5866b581932585, type: 3}
+      propertyPath: m_TagString
+      value: Building
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9f149b59f95c4261b5866b581932585, type: 3}
 --- !u!4 &857055348001900836 stripped
@@ -306,6 +318,10 @@ PrefabInstance:
     - target: {fileID: 7428645006852782802, guid: e9f149b59f95c4261b5866b581932585, type: 3}
       propertyPath: m_Name
       value: Wooden Block (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7428645006852782802, guid: e9f149b59f95c4261b5866b581932585, type: 3}
+      propertyPath: m_TagString
+      value: Building
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9f149b59f95c4261b5866b581932585, type: 3}
@@ -373,6 +389,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wooden Block (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7428645006852782802, guid: e9f149b59f95c4261b5866b581932585, type: 3}
+      propertyPath: m_TagString
+      value: Building
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9f149b59f95c4261b5866b581932585, type: 3}
 --- !u!4 &857055348059811660 stripped
@@ -439,6 +459,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stone Block
       objectReference: {fileID: 0}
+    - target: {fileID: 7428645006852782802, guid: fd84a5dc9169b449ea432da60ef4d47a, type: 3}
+      propertyPath: m_TagString
+      value: Building
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd84a5dc9169b449ea432da60ef4d47a, type: 3}
 --- !u!4 &857055347154962511 stripped
@@ -500,6 +524,10 @@ PrefabInstance:
     - target: {fileID: 8313402609560572699, guid: 07c412bc21bb1467dbba12d6c6bb696a, type: 3}
       propertyPath: m_Name
       value: Wood Shatter
+      objectReference: {fileID: 0}
+    - target: {fileID: 8313402609560572699, guid: 07c412bc21bb1467dbba12d6c6bb696a, type: 3}
+      propertyPath: m_TagString
+      value: Building
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07c412bc21bb1467dbba12d6c6bb696a, type: 3}
@@ -567,6 +595,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wooden Block (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7428645006852782802, guid: e9f149b59f95c4261b5866b581932585, type: 3}
+      propertyPath: m_TagString
+      value: Building
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9f149b59f95c4261b5866b581932585, type: 3}
 --- !u!4 &857055347538903894 stripped
@@ -628,6 +660,10 @@ PrefabInstance:
     - target: {fileID: 5993704297489910061, guid: e7ad7e3f836b843ddadc2112ca8a5b50, type: 3}
       propertyPath: m_Name
       value: Ice Block (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5993704297489910061, guid: e7ad7e3f836b843ddadc2112ca8a5b50, type: 3}
+      propertyPath: m_TagString
+      value: Building
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7ad7e3f836b843ddadc2112ca8a5b50, type: 3}

@@ -101,9 +101,8 @@ public class GameManagerV2 : MonoBehaviour
             optionBtn.transform.localScale = Vector3.zero;
             Invoke("LevelComplete", 5.112f);    // levelClear is 5.112sec
         }
-
-        // 如果沒有鳥但還有豬則遊戲失敗
-        if(remainingBirds == 0 && remainingPigs != 0) {
+        else if(remainingBirds == 0 && remainingPigs != 0) {
+            // 如果沒有鳥但還有豬則遊戲失敗
             gameStatus = false;
             // 停止遊戲音樂，播放失敗音效
             GMplayer.Stop();
@@ -112,36 +111,43 @@ public class GameManagerV2 : MonoBehaviour
             optionBtn.transform.localScale = Vector3.zero;
             Invoke("LevelFailed", 4.716f);
         }
-
-        // 如果遊戲未結束，偵測到鳥靜止後開始偵測全局豬和建築
-        // 等到velocity都等於0才return
-        /*
-        GameObject[] buildings;
-        buildings = GameObject.FindGameObjectWithTag("Building");
-        GameObject bird = GameObject.FindGameObjectWithTag("Bird"); // 此處鳥的tag要與still bird有區別
+        else {
+            // 如果遊戲未結束，偵測到鳥靜止後開始偵測全局豬和建築
+            // 等到velocity都等於0才return
         
-        // 偵測鳥是否靜止
-        while(true) {
-            if(bird.GetComponent<RigidBody>().velocity == 0f)
-                break;
-        }
+            GameObject[] buildings;
+            buildings = GameObject.FindGameObjectsWithTag("Building");
+            //GameObject bird = GameObject.FindGameObjectWithTag("Bird"); // 此處鳥的tag要與still bird有區別
+        
+            // 偵測鳥是否靜止，目前不需要，因為鳥destroy之後才呼叫此函式
+            /*
+            while(true) {
+                if(bird.GetComponent<Rigidbody>().velocity == Vector3.zero)
+                    break;
+            }
+            */
 
-        // 等到鳥靜止後開始偵測建築跟豬是否靜止
-        while(true) {
-            bool canBreak = true;
-            int length = pigs.Length > buildings.Length ? pigs.Length : buildings.Length;
-            for(int i = 0; i < length; ++i) {
-                if((length < pigs.Length && pigs[i].GetComponent<RigidBody>().velocity != 0f)
-                    || (Length < buildings.Length && buildings[i].GetComponent<RigidBody>().velocity != 0f)) {
-                    canBreak = false;
+            // 開始偵測建築跟豬是否靜止
+            while(true) {
+                bool canBreak = true;
+                // 更新pigs
+                pigs = GameObject.FindGameObjectsWithTag("Pig");
+                // 更新buildings
+                buildings = GameObject.FindGameObjectsWithTag("Building");
+                int length = pigs.Length > buildings.Length ? pigs.Length : buildings.Length;
+                for(int i = 0; i < length; ++i) {
+                    if((length < pigs.Length && pigs[i].GetComponent<Rigidbody>().velocity != Vector3.zero)
+                        || (length < buildings.Length && buildings[i].GetComponent<Rigidbody>().velocity != Vector3.zero)) {
+                        canBreak = false;
+                        break;
+                    }
+                }
+                if(canBreak) {
+                    BirdManager.Instance.setReady(true);
                     break;
                 }
             }
-            if(canBreak) {
-                break;
-            }
         }
-        */
     }
 
     public void setCameraStatus(int n) {

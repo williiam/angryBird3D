@@ -29,6 +29,14 @@ public class ShootController : MonoBehaviour
 
     private BaseBird bird;
 
+    private AudioSource shootPlayer;
+
+    public AudioClip Slingshot;
+    
+    public AudioClip SlingshotRelease;
+    
+    public AudioClip Flying;
+
     // stage 0: 還沒發射, stage 1: dragging, stage2: 射出去了🥵
     private float forceMultiplier = 9;
 
@@ -46,7 +54,7 @@ public class ShootController : MonoBehaviour
         startPosition = transform.position;
         // generateBird();
         ShootLine.positionCount = 3;
-        
+        shootPlayer = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -71,6 +79,8 @@ public class ShootController : MonoBehaviour
 
     void OnMouseDown()
     {
+        shootPlayer.PlayOneShot(Slingshot);
+        BirdManager.Instance.setReady(false);
         bird = BirdManager.Instance.GetCurrentBird();
         if(bird==null){
             return;
@@ -81,6 +91,7 @@ public class ShootController : MonoBehaviour
 
     void OnMouseUp()
     {
+        shootPlayer.PlayOneShot(SlingshotRelease);
          SetStage(2);
         mouseReleasePos = Input.mousePosition;
         Shoot(mousePressDownPos - mouseReleasePos);
@@ -100,6 +111,7 @@ public class ShootController : MonoBehaviour
 
     void Shoot(Vector3 Force)
     {
+        shootPlayer.PlayOneShot(Flying);
         Rigidbody _rb = bird.GetComponent<Rigidbody>();
         Vector3 force = new Vector3(Force.x, Force.y, Force.y) * forceMultiplier;
         _rb.AddForce(force);
