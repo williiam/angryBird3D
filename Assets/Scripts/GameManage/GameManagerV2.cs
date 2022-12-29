@@ -158,6 +158,7 @@ public class GameManagerV2 : MonoBehaviour
     public void AddScore(int n) {
         score += n;
         scoreText.text = "SCORE: " + score;
+        Debug.Log(n);
     }
 
     public int GetScore() {

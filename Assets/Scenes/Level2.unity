@@ -193,51 +193,51 @@ PrefabInstance:
     - target: {fileID: 6709256825146823169, guid: 138f511dba999f74ab6a5b66f059d9e6, type: 3}
       propertyPath: gameManager
       value: 
-      objectReference: {fileID: 6724289407089974657, guid: 34f7eb1b4c4004477972c4cf7e239ff9, type: 3}
+      objectReference: {fileID: 1604463225}
     - target: {fileID: 6709256825369891141, guid: 138f511dba999f74ab6a5b66f059d9e6, type: 3}
       propertyPath: gameManager
       value: 
-      objectReference: {fileID: 6724289407089974657, guid: 34f7eb1b4c4004477972c4cf7e239ff9, type: 3}
+      objectReference: {fileID: 1604463225}
     - target: {fileID: 6709256825853362182, guid: 138f511dba999f74ab6a5b66f059d9e6, type: 3}
       propertyPath: gameManager
       value: 
-      objectReference: {fileID: 6724289407089974657, guid: 34f7eb1b4c4004477972c4cf7e239ff9, type: 3}
+      objectReference: {fileID: 1604463225}
     - target: {fileID: 6709256825856657675, guid: 138f511dba999f74ab6a5b66f059d9e6, type: 3}
       propertyPath: gameManager
       value: 
-      objectReference: {fileID: 6724289407089974657, guid: 34f7eb1b4c4004477972c4cf7e239ff9, type: 3}
+      objectReference: {fileID: 1604463225}
     - target: {fileID: 6709256826077557524, guid: 138f511dba999f74ab6a5b66f059d9e6, type: 3}
       propertyPath: gameManager
       value: 
-      objectReference: {fileID: 6724289407089974657, guid: 34f7eb1b4c4004477972c4cf7e239ff9, type: 3}
+      objectReference: {fileID: 1604463225}
     - target: {fileID: 6709256826169753864, guid: 138f511dba999f74ab6a5b66f059d9e6, type: 3}
       propertyPath: gameManager
       value: 
-      objectReference: {fileID: 6724289407089974657, guid: 34f7eb1b4c4004477972c4cf7e239ff9, type: 3}
+      objectReference: {fileID: 1604463225}
     - target: {fileID: 6709256826385865801, guid: 138f511dba999f74ab6a5b66f059d9e6, type: 3}
       propertyPath: gameManager
       value: 
-      objectReference: {fileID: 6724289407089974657, guid: 34f7eb1b4c4004477972c4cf7e239ff9, type: 3}
+      objectReference: {fileID: 1604463225}
     - target: {fileID: 6709256826646333507, guid: 138f511dba999f74ab6a5b66f059d9e6, type: 3}
       propertyPath: gameManager
       value: 
-      objectReference: {fileID: 6724289407089974657, guid: 34f7eb1b4c4004477972c4cf7e239ff9, type: 3}
+      objectReference: {fileID: 1604463225}
     - target: {fileID: 6709256826682315310, guid: 138f511dba999f74ab6a5b66f059d9e6, type: 3}
       propertyPath: gameManager
       value: 
-      objectReference: {fileID: 6724289407089974657, guid: 34f7eb1b4c4004477972c4cf7e239ff9, type: 3}
+      objectReference: {fileID: 1604463225}
     - target: {fileID: 6709256826787571423, guid: 138f511dba999f74ab6a5b66f059d9e6, type: 3}
       propertyPath: gameManager
       value: 
-      objectReference: {fileID: 6724289407089974657, guid: 34f7eb1b4c4004477972c4cf7e239ff9, type: 3}
+      objectReference: {fileID: 1604463225}
     - target: {fileID: 6709256826802143714, guid: 138f511dba999f74ab6a5b66f059d9e6, type: 3}
       propertyPath: gameManager
       value: 
-      objectReference: {fileID: 6724289407089974657, guid: 34f7eb1b4c4004477972c4cf7e239ff9, type: 3}
+      objectReference: {fileID: 1604463225}
     - target: {fileID: 6709256827014140351, guid: 138f511dba999f74ab6a5b66f059d9e6, type: 3}
       propertyPath: gameManager
       value: 
-      objectReference: {fileID: 6724289407089974657, guid: 34f7eb1b4c4004477972c4cf7e239ff9, type: 3}
+      objectReference: {fileID: 1604463225}
     - target: {fileID: 7718095317375192676, guid: 138f511dba999f74ab6a5b66f059d9e6, type: 3}
       propertyPath: m_LocalPosition.x
       value: -44.35
