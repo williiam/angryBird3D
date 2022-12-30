@@ -29,14 +29,14 @@ public class GameManagerV2 : MonoBehaviour
     public AudioClip levelFailed;
     // 遊戲變數
     public int score = 0;
-    private int totalScore = 0;
+    public int totalScore = 0;
     public int remainingBirds = 3;
     public int level;
     public float panelRate = 3f;
     private int cameraStatus = 0; 
     // 0 鳥不在彈弓上且未發射
     // 1 鳥在彈弓上但還沒射
-    // 2 鳥已經發射且為落地
+    // 2 鳥已經發射且未落地
     // 3 鳥落地(3秒後變為0)
     public bool gameStatus;
     

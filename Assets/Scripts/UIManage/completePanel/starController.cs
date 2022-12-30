@@ -28,6 +28,8 @@ public class starController : MonoBehaviour
     }
 
     IEnumerator ShowStars() {
+        int score = GameManagerV2.Instance.score;
+        int totalScore = GameManagerV2.Instance.totalScore;
         // TODO: 增加判斷幾顆星星的機制, star scale is 1.2, 0.84, 0
         // star1
         float timer = 0f;
@@ -38,19 +40,23 @@ public class starController : MonoBehaviour
         }
 
         // star2
-        timer = 0f;
-        while(timer < 1f) {
-            star2.transform.localScale = new Vector3(timer * 1.2f, timer * 0.84f , 0f);
-            timer += Time.fixedUnscaledDeltaTime * starRate;
-            yield return null;
+        if(score > totalScore * 0.5f) {
+            timer = 0f;
+            while(timer < 1f) {
+                star2.transform.localScale = new Vector3(timer * 1.2f, timer * 0.84f , 0f);
+                timer += Time.fixedUnscaledDeltaTime * starRate;
+                yield return null;
+            }
         }
 
         // star3
-        timer = 0f;
-        while(timer < 1f) {
-            star3.transform.localScale = new Vector3(timer * 1.2f, timer * 0.84f , 0f);
-            timer += Time.fixedUnscaledDeltaTime * starRate;
-            yield return null;
+        if(score > totalScore * 0.5f) {
+            timer = 0f;
+            while(timer < 1f) {
+                star3.transform.localScale = new Vector3(timer * 1.2f, timer * 0.84f , 0f);
+                timer += Time.fixedUnscaledDeltaTime * starRate;
+                yield return null;
+            }
         }
     }
 }
