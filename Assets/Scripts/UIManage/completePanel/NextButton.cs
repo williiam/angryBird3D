@@ -26,8 +26,13 @@ public class NextButton : MonoBehaviour
         Time.timeScale = 0;
 
         int level = SceneManager.GetActiveScene().buildIndex;
-        // 目前只有一關卡，直接當作retry
-        SceneManager.LoadScene(level/*+1*/);
+        // 下一關，如果是最後一關則回到選關scene
+        if(level == 5) {
+            SceneManager.LoadScene(1);
+        }
+        else {
+            SceneManager.LoadScene(level + 1);
+        }
         Time.timeScale = 1;
     }
 }

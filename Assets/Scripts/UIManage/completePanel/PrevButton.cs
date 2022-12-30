@@ -26,8 +26,8 @@ public class PrevButton : MonoBehaviour
         Time.timeScale = 0;
 
         int level = SceneManager.GetActiveScene().buildIndex;
-        // 目前只有一關卡，直接當作retry
-        SceneManager.LoadScene(level/*+1*/);
+        // 回到上一關
+        SceneManager.LoadScene(level - 1);
         Time.timeScale = 1;
     }
 }

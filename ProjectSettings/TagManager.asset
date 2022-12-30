@@ -10,6 +10,8 @@ TagManager:
   - UI
   - Ground
   - bgm
+  - StillBird
+  - Building
   layers:
   - Default
   - TransparentFX

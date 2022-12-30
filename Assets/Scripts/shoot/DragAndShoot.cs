@@ -51,7 +51,8 @@ public class DragAndShoot : MonoBehaviour
         Shoot(mouseReleasePos-mousePressDownPos);
     }
 
-    void OnMouseDrag() {
+    void OnMouseDrag() 
+    {
         Vector3 forceInit = (mousePressDownPos - Input.mousePosition);
         Vector3 forceV = (new Vector3(forceInit.x, forceInit.y, forceInit.y)) * forceMultiplier;
 
