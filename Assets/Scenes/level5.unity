@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.08959001, g: 0.072755024, b: 0.14544204, a: 1}
+  m_IndirectSpecularColor: {r: 0.08988392, g: 0.0730543, b: 0.14573301, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -764,7 +764,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4585791454807251206, guid: 11dbca5b0aeea48529ea2a970bfe92a8, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 11dbca5b0aeea48529ea2a970bfe92a8, type: 3}
 --- !u!1001 &6547142117258072790
 PrefabInstance:
@@ -828,7 +829,7 @@ PrefabInstance:
     - target: {fileID: 8778617142559021190, guid: 1b3595143ad15024b885340e632f29f6, type: 3}
       propertyPath: hook
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 245166364}
     - target: {fileID: 8778617142559021190, guid: 1b3595143ad15024b885340e632f29f6, type: 3}
       propertyPath: optionBtn
       value: 

@@ -124,6 +124,7 @@ public class ShootController : MonoBehaviour
         _rb.AddForce(force);
         TrajectoryDrawer.Instance.ClearTrajectory();
         bird.Release();
+        GameManagerV2.Instance.SetRemainingBirds(GameManagerV2.Instance.GetRemainingBirds() - 1);
     }
 
     // public methods

@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BirdManager : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class BirdManager : MonoBehaviour
             Instance = this;
         }
     }
+
     void Start()
     {
         if (Instance == null)
@@ -28,6 +30,30 @@ public class BirdManager : MonoBehaviour
             Instance = this;
         }
         Ready = true;
+
+        // 依照當前關卡設定不同數量的鳥
+        int level = SceneManager.GetActiveScene().buildIndex + 1;
+        switch(level)
+        {
+            case 1:
+                GameManagerV2.Instance.SetRemainingBirds(3);
+                break;
+            case 2:
+                GameManagerV2.Instance.SetRemainingBirds(3);
+                break;
+            case 3:
+                GameManagerV2.Instance.SetRemainingBirds(3);
+                break;
+            case 4:
+                GameManagerV2.Instance.SetRemainingBirds(3);
+                break;
+            case 5:
+                GameManagerV2.Instance.SetRemainingBirds(3);
+                break;
+            case 6:
+                GameManagerV2.Instance.SetRemainingBirds(3);
+                break;
+        }
     }
  
     public BaseBird GetCurrentBird()

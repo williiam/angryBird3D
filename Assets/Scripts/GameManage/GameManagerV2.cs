@@ -30,7 +30,7 @@ public class GameManagerV2 : MonoBehaviour
     // 遊戲變數
     public int score = 0;
     public int totalScore = 0;
-    public int remainingBirds = 3;
+    public int remainingBirds = 0;
     public int level;
     public float panelRate = 3f;
     private int cameraStatus = 0; 
@@ -173,6 +173,14 @@ public class GameManagerV2 : MonoBehaviour
 
     public int GetTotalScore() {
         return totalScore;
+    }
+
+    public void SetRemainingBirds(int n) {
+        remainingBirds = n;
+    }
+
+    public int GetRemainingBirds() {
+        return remainingBirds;
     }
 
     private void LevelComplete() {
