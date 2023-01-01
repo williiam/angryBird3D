@@ -32,7 +32,8 @@ public class BirdManager : MonoBehaviour
         Ready = true;
 
         // 依照當前關卡設定不同數量的鳥
-        int level = SceneManager.GetActiveScene().buildIndex + 1;
+        int level = SceneManager.GetActiveScene().buildIndex - 1;
+        Debug.Log(level);
         switch(level)
         {
             case 1:
