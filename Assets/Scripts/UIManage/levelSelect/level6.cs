@@ -4,30 +4,31 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class PrevButton : MonoBehaviour
+public class level6 : MonoBehaviour
 {
     public AudioClip btnClick;
     public AudioSource btnPlayer;
     private float btnClickTime = 0.470f;
-
-    void Start() {
+    private GameObject bgm;
+    // Start is called before the first frame update
+    void Start()
+    {
         btnPlayer = GetComponent<AudioSource>();
+        bgm = GameObject.FindWithTag("bgm");
         GetComponent<Button>().onClick.AddListener(startcoroutine);
     }
 
     private void startcoroutine() {
         btnPlayer.PlayOneShot(btnClick);
-        StartCoroutine(LoadPrevLevel());
+        StartCoroutine(LoadLevel6());
     }
 
-    IEnumerator LoadPrevLevel() {
-        Time.timeScale = 1;
+    IEnumerator LoadLevel6() {
         yield return new WaitForSeconds(btnClickTime);
-        Time.timeScale = 0;
-
-        int level = SceneManager.GetActiveScene().buildIndex;
-        // 回到上一關
-        SceneManager.LoadScene(level - 1);
-        Time.timeScale = 1;
+        if(PlayerPrefs.GetInt("levelUnlock", 0) >= 6) {
+            bgm.GetComponent<AudioSource>().Stop();
+            SceneManager.LoadScene(7);
+        }
+        yield return null;
     }
 }

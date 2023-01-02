@@ -19,6 +19,7 @@ public class GameManagerV2 : MonoBehaviour
     public GameObject completePanel;
     public GameObject failedPanel;
     public GameObject optionBtn;
+    public GameObject skillBtn;
     public Text scoreText;
     // 音效相關
     private AudioSource GMplayer;
@@ -97,8 +98,9 @@ public class GameManagerV2 : MonoBehaviour
             // 停止遊戲音樂，播放通關音效
             GMplayer.Stop();
             GMplayer.PlayOneShot(levelClear);
-            // 隱藏optionBtn
+            // 隱藏Btn
             optionBtn.transform.localScale = Vector3.zero;
+            skillBtn.transform.localScale = Vector3.zero;
             Invoke("LevelComplete", 5.112f);    // levelClear is 5.112sec
         }
         else if(remainingBirds == 0 && remainingPigs != 0) {
@@ -107,8 +109,9 @@ public class GameManagerV2 : MonoBehaviour
             // 停止遊戲音樂，播放失敗音效
             GMplayer.Stop();
             GMplayer.PlayOneShot(levelUnclear); // levelUnclear is 4.716sec
-            // 隱藏optionBtn
+            // 隱藏Btn
             optionBtn.transform.localScale = Vector3.zero;
+            skillBtn.transform.localScale = Vector3.zero;
             Invoke("LevelFailed", 4.716f);
         }
         else {

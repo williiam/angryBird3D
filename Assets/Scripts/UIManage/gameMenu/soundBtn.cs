@@ -9,7 +9,7 @@ public class soundBtn : MonoBehaviour
     public AudioSource btnPlayer;
     public Sprite soundOn;
     public Sprite soundOff;
-    private float btnClickTime = 0.261f;
+    private float btnClickTime = 0.470f;
     // public GameObject startBtn;
     
     // Start is called before the first frame update
