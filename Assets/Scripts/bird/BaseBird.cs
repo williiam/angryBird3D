@@ -34,6 +34,7 @@ public class BaseBird : MonoBehaviour
         {
             GameObject feathers = Instantiate(Feathers, transform.position, Quaternion.identity);
             Destroy(feathers, 2);
+            GameManagerV2.Instance.setCameraStatus(3);
             if (!BirdPlayer.isPlaying)
             {
                 BirdPlayer.PlayOneShot(BirdCollision);

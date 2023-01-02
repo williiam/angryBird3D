@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(Collider))]
@@ -19,6 +20,9 @@ public class ShootController : MonoBehaviour
 
     [SerializeField]
     private LineRenderer ShootLine;
+
+    [SerializeField]
+    private CinemachineVirtualCamera vCm;
 
     private Vector3 mousePressDownPos;
     private Vector3 mouseReleasePos;
@@ -62,42 +66,59 @@ public class ShootController : MonoBehaviour
     {
         int stage = GameManagerV2.Instance.getCameraStatus();
         bird = BirdManager.Instance.GetCurrentBird();
-        if(bird==null){
+
+        if(bird == null) {
+            vCm.Follow = transform;
+            vCm.LookAt = transform;
+            ShootLine.positionCount = 2;
+            ShootLine.SetPosition(0, LeftPoint.transform.position);
+            ShootLine.SetPosition(1, RightPoint.transform.position);
             return;
         }
+
         if(stage == 0 || stage == 1) {
             ShootLine.positionCount = 3;
             ShootLine.SetPosition(0, LeftPoint.transform.position);
-            ShootLine.SetPosition(1, bird.transform.position);
+            ShootLine.SetPosition(1, bird.GetComponent<Transform>().position);
             ShootLine.SetPosition(2, RightPoint.transform.position);
             bird.GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
 
-        if(stage == 2) {
-            ShootLine.positionCount = 2;
-            ShootLine.SetPosition(0, LeftPoint.transform.position);
-            ShootLine.SetPosition(1, RightPoint.transform.position);
-        }
-        
         if(stage == 0) {
-            bird.transform.position = startPosition;
+            bird.GetComponent<Transform>().position = startPosition;
+            vCm.Follow = transform;
+            vCm.LookAt = transform;
         }
+
+        if(stage == 1) {
+            vCm.Follow = bird.GetComponent<Transform>();
+            vCm.LookAt = transform;            
+        }
+
+        if(stage == 2) {
+            vCm.Follow = bird.GetComponent<Transform>();
+            vCm.LookAt = bird.GetComponent<Transform>();
+        }
+
     }
 
     void OnMouseDown()
     {
-        shootPlayer.PlayOneShot(Slingshot);
-        BirdManager.Instance.setReady(false);
-        bird = BirdManager.Instance.GetCurrentBird();
         if(bird==null){
             return;
         }
+        shootPlayer.PlayOneShot(Slingshot);
+        BirdManager.Instance.setReady(false);
+        bird = BirdManager.Instance.GetCurrentBird();
         mousePressDownPos = Input.mousePosition;
         SetStage(1);
     }
 
     void OnMouseUp()
     {
+        if(bird==null){
+            return;
+        }
         shootPlayer.PlayOneShot(SlingshotRelease);
          SetStage(2);
         mouseReleasePos = Input.mousePosition;
@@ -105,12 +126,15 @@ public class ShootController : MonoBehaviour
     }
 
     void OnMouseDrag() {
+        if(bird==null){
+            return;
+        }
         int stage = GameManagerV2.Instance.getCameraStatus();
         Vector3 forceInit = (Input.mousePosition - mousePressDownPos);
         Vector3 forceV = (new Vector3(forceInit.x, forceInit.y, forceInit.y)) * forceMultiplier;
         Vector3 newPos = startPosition + (( new Vector3(forceInit.x, forceInit.y, forceInit.y) / rb.mass ) * Time.fixedDeltaTime);
         if(newPos.y < 1) newPos.y = 1;
-        if(stage == 1) bird.transform.position = newPos;
+        if(stage == 1) bird.GetComponent<Transform>().position = newPos;
 
         Rigidbody _rb = bird.GetComponent<Rigidbody>();
         TrajectoryDrawer.Instance.UpdateTrajectory(forceV, _rb, newPos);
