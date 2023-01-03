@@ -7,11 +7,12 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Force Field
-  m_Shader: {fileID: 4800000, guid: 2bffc50af4b1ff34cb151aa15bb9edb4, type: 3}
+  m_Name: HexgonSphereMat
+  m_Shader: {fileID: 4800000, guid: f56c26a8cea318848893b1f7c65265fa, type: 3}
   m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
+  m_InvalidKeywords:
+  - F_OFF
+  m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -41,7 +42,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 1d557bc533f5684438d25d03042b1025, type: 3}
+        m_Texture: {fileID: 2800000, guid: 7e54c3a47ce724755bcc405751e14fa8, type: 3}
         m_Scale: {x: 5, y: 5}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -58,26 +59,57 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - F: 0
+    - _Alpha: 1.04
     - _BumpScale: 1
-    - _Cull: 2
+    - _ChromaticAberration: 0.3
+    - _CullOff: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
+    - _Distort: 100
     - _DstBlend: 0
-    - _FresnelPower: 1.11
+    - _Float1: 2
+    - _Float2: 3
+    - _Fresnel: 166
+    - _FresnelIntensity: 61
+    - _FresnelWidth: 1.11
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
+    - _Hold: 2
+    - _IntersectionThreshold: 0.848
+    - _MaskClipValue: -1.4
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
+    - _Offset: 0
+    - _Op: 0
     - _Parallax: 0.02
+    - _Range: 0.2
+    - _RimPower: 51
+    - _RimWidth: 0.82
+    - _ScrollSpeed: 2
+    - _ScrollSpeedU: 0
+    - _ScrollSpeedV: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
+    - _Transform: 0
     - _UVSec: 0
     - _ZWrite: 1
+    - __dirty: 1
+    - _fr: 2.22
+    - _intersect: 0.3
+    - _node_6584: 0.8
+    - _x: 0.063
+    - _y: 0.122
     m_Colors:
-    - _Color: {r: 0, g: 1.925453, b: 2.9223187, a: 1}
+    - _Color: {r: 0.8, g: 0.8, b: 0.8, a: 1}
+    - _Color0: {r: 1, g: 0, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _ScrollDirection: {r: 0.1, g: 0.1, b: 0.1, a: 0.1}
+    - _MainColor: {r: 0.42653078, g: 0.6308863, b: 0.6698113, a: 1}
+    - _intersectColor: {r: 1, g: 0, b: 0, a: 1}
+    - _node_4016: {r: 0.034482475, g: 0, b: 1, a: 1}
+    - _node_5050: {r: 0, g: 0, b: 0, a: 0}
+    - _node_6799: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_BuildTextureStacks: []
