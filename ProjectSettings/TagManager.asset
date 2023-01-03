@@ -12,6 +12,8 @@ TagManager:
   - bgm
   - StillBird
   - Building
+  - ForceField
+  - WindArea
   layers:
   - Default
   - TransparentFX
