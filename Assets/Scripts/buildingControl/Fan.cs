@@ -9,20 +9,20 @@ public class Fan : MonoBehaviour
 
     void Start()
     {
-        fanSpeed = 50f;
+        fanSpeed = 10f;
         force = 10f;
     }
 
     void Update()
     {
-        transform.Rotate(Vector3.up * fanSpeed * Time.deltaTime);
+        //transform.Rotate(Vector3.up * fanSpeed * Time.deltaTime);
     }
 
     void OnTriggerStay(Collider collision)
     {
-        if (collision.gameObject.CompareTag("Pig"))
+        if (collision.gameObject.CompareTag("Bird"))
         {
-            collision.GetComponent<Rigidbody>().AddForce(Vector3.up * force * fanSpeed);
+            collision.GetComponent<Rigidbody>().AddForce(Vector3.down * force * fanSpeed);
         }
     }
 }

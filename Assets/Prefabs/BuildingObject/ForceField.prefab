@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3558987367164530252}
+  - component: {fileID: 4670598300263473140}
   m_Layer: 0
   m_Name: ForceField
   m_TagString: Untagged
@@ -32,6 +33,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4670598300263473140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3558987367164826220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6022b32693b9e7548af14a8b22bffaf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  forceField: {fileID: 0}
 --- !u!1 &3558987367164826222
 GameObject:
   m_ObjectHideFlags: 0
@@ -44,7 +58,6 @@ GameObject:
   - component: {fileID: 3558987367161630318}
   - component: {fileID: 3558987367162629294}
   - component: {fileID: 3558987366922521079}
-  - component: {fileID: 3558987366922521078}
   m_Layer: 0
   m_Name: HexgonSphere
   m_TagString: Untagged
@@ -131,15 +144,3 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: d959d8b37f229d140b4fab6a1b505332, type: 3}
---- !u!114 &3558987366922521078
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3558987367164826222}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb78d1ccfa12e4a479061680e6844bc1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

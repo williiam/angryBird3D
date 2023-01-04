@@ -10,6 +10,8 @@ public class Explosive : MonoBehaviour
     [SerializeField] private GameObject _particles;
  
     private void OnCollisionEnter(Collision collision) {
+        // TODO: add the score
+        GameManagerV2.Instance.AddScore(2000);
         if (collision.relativeVelocity.magnitude >= _triggerForce) {
             var surroundingObjects = Physics.OverlapSphere(transform.position, _explosionRadius);
  
