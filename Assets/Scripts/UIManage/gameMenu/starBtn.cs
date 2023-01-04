@@ -12,6 +12,8 @@ public class starBtn : MonoBehaviour
     public GameObject star2;
     public GameObject star3;
     private float btnClickTime = 0.470f;
+    // 此鳥的種類字串，該欄位可可被繼承class複寫
+    public string birdType = "BaseBird";
 
     // Start is called before the first frame update
     void Start()

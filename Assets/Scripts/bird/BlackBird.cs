@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class BlackBird : BaseBird
 {
-   public override void CastSpell(){
+    public string birdType = "black";
+
+    public override void CastSpell(){
         // 使此鳥爆炸
         Instantiate(FeatherExplosion, transform.position, Quaternion.identity);
    }

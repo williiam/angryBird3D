@@ -5,8 +5,9 @@ using UnityEngine;
 public class BlueBird : BaseBird
 {
    public BaseBird splitBird;
+    public string birdType = "blue";
 
-   public override void CastSpell(){
+    public override void CastSpell(){
        //分裂
        Instantiate(splitBird, transform.position, transform.rotation);
        Instantiate(splitBird, transform.position, transform.rotation);

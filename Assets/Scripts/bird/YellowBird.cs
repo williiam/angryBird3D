@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class YellowBird : BaseBird
 {
-
-   public override void CastSpell(){
+    public string birdType = "yellow";
+    public override void CastSpell(){
         Rb.AddForce(transform.forward * 1000);
    }
 

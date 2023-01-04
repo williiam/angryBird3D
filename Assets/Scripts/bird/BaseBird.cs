@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class BaseBird : MonoBehaviour 
 {
+   
     public Rigidbody Rb;
     public GameObject Feathers;
     public GameObject FeatherExplosion;
     public BirdManager birdManager;
     public AudioClip BirdCollision;
     public AudioSource BirdPlayer;
+    public string birdType = "base";
     public float ReleaseTime = 0.5f;
     public float DestructionTime = 5f;
     public float force;
+    
+
+  
 
     void Start() {
         BirdPlayer = GetComponent<AudioSource>();
