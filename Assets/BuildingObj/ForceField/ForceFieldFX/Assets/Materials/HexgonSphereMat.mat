@@ -66,18 +66,18 @@ Material:
     - _CullOff: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
-    - _Distort: 100
+    - _Distort: 37.8
     - _DstBlend: 0
     - _Float1: 2
     - _Float2: 3
-    - _Fresnel: 166
+    - _Fresnel: 157
     - _FresnelIntensity: 61
-    - _FresnelWidth: 1.11
+    - _FresnelWidth: 1.02
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _Hold: 2
-    - _IntersectionThreshold: 0.848
+    - _IntersectionThreshold: 0.226
     - _MaskClipValue: -1.4
     - _Metallic: 0
     - _Mode: 0

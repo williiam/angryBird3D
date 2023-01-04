@@ -2,14 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovingPlatform : MonoBehaviour
+public class MoveTogether : MonoBehaviour
 {
     [SerializeField]
     private WaypointPath _waypointPath;
 
     [SerializeField]
     private float _speed;
-
     private int _targetWaypointIndex;
 
     private Transform _previousWaypoint;
@@ -18,11 +17,16 @@ public class MovingPlatform : MonoBehaviour
     private float _timeToWaypoint;
     private float _elapsedTime;
 
+    private GameObject boss;
+
     void Start()
     {
+        if (boss){
+            Debug.Log("BigBoss is exists");
+        }
+
         TargetNextWaypoint();
     }
-
     void FixedUpdate()
     {
         _elapsedTime += Time.deltaTime;
@@ -32,16 +36,14 @@ public class MovingPlatform : MonoBehaviour
         elapsedPercentage = Mathf.SmoothStep(0, 1, elapsedPercentage);
         
         transform.position = Vector3.Lerp(_previousWaypoint.position, _targetWaypoint.position, elapsedPercentage);
-        transform.rotation = Quaternion.Lerp(_previousWaypoint.rotation, _targetWaypoint.rotation, elapsedPercentage);
-
+        
         if (elapsedPercentage >= 1)
         {
             TargetNextWaypoint();
         }
     }
 
-    private void TargetNextWaypoint()
-    {
+    void TargetNextWaypoint(){
         _previousWaypoint = _waypointPath.GetWaypoint(_targetWaypointIndex);
         _targetWaypointIndex = _waypointPath.GetNextWaypointIndex(_targetWaypointIndex);
         _targetWaypoint = _waypointPath.GetWaypoint(_targetWaypointIndex);
@@ -51,6 +53,7 @@ public class MovingPlatform : MonoBehaviour
         float distanceToWaypoint = Vector3.Distance(_previousWaypoint.position, _targetWaypoint.position);
         _timeToWaypoint = distanceToWaypoint / _speed;
     }
+
 
     private void OnTriggerEnter(Collider other)
     {
