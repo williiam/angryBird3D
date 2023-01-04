@@ -12,6 +12,8 @@ using Text = TMPro.TextMeshProUGUI;
 public class GameManagerV2 : MonoBehaviour
 {
     public static GameManagerV2 Instance;
+    // 關卡設定
+    //public SceneSettings sceneSettings;
     // 發射相關
     public GameObject hook;
     public GameObject StillBird;
@@ -19,6 +21,7 @@ public class GameManagerV2 : MonoBehaviour
     public GameObject completePanel;
     public GameObject failedPanel;
     public GameObject optionBtn;
+    public GameObject skillBtn;
     public Text scoreText;
     // 音效相關
     private AudioSource GMplayer;
@@ -39,7 +42,11 @@ public class GameManagerV2 : MonoBehaviour
     // 2 鳥已經發射且未落地
     // 3 鳥落地(3秒後變為0)
     public bool gameStatus;
-    
+
+    private void Awake()
+    {
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -69,7 +76,7 @@ public class GameManagerV2 : MonoBehaviour
         failedPanel.transform.localScale = Vector3.zero;
 
         // 設置待命鳥
-        // hook.GetComponent<ShootController>().generateBird();
+        //BirdManager.Instance.InitBirds(sceneSettings);
 
         // 先計算出關卡總分
         int pigQuan = GameObject.FindGameObjectsWithTag("Pig").Length;
@@ -97,8 +104,9 @@ public class GameManagerV2 : MonoBehaviour
             // 停止遊戲音樂，播放通關音效
             GMplayer.Stop();
             GMplayer.PlayOneShot(levelClear);
-            // 隱藏optionBtn
+            // 隱藏Btn
             optionBtn.transform.localScale = Vector3.zero;
+            skillBtn.transform.localScale = Vector3.zero;
             Invoke("LevelComplete", 5.112f);    // levelClear is 5.112sec
         }
         else if(remainingBirds == 0 && remainingPigs != 0) {
@@ -107,8 +115,9 @@ public class GameManagerV2 : MonoBehaviour
             // 停止遊戲音樂，播放失敗音效
             GMplayer.Stop();
             GMplayer.PlayOneShot(levelUnclear); // levelUnclear is 4.716sec
-            // 隱藏optionBtn
+            // 隱藏Btn
             optionBtn.transform.localScale = Vector3.zero;
+            skillBtn.transform.localScale = Vector3.zero;
             Invoke("LevelFailed", 4.716f);
         }
         else {

@@ -9,9 +9,10 @@ public class resumeBtn : MonoBehaviour
     public GameObject optionBtn;
     public AudioClip btnClick;
     public AudioSource btnPlayer;
-    public GameObject gameManager;
+    public GameManagerV2 gameManager;
     public AudioSource GMplayer;
     private float menuRate = 1f;
+    private float btnClickTime = 0.470f;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +37,9 @@ public class resumeBtn : MonoBehaviour
     }
 
     IEnumerator HideGameMenu() {
+        Time.timeScale = 1;
+        yield return new WaitForSeconds(btnClickTime);
+        Time.timeScale = 0;
         // 漸縮小面板
         float timer = 0f;
         while(timer < 1f) {

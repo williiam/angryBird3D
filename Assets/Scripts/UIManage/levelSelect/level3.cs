@@ -8,7 +8,7 @@ public class level3 : MonoBehaviour
 {
     public AudioClip btnClick;
     public AudioSource btnPlayer;
-    private float btnClickTime = 0.261f;
+    private float btnClickTime = 0.470f;
     private GameObject bgm;
     // Start is called before the first frame update
     void Start()

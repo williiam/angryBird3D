@@ -5,7 +5,6 @@ using UnityEngine;
 public class Pig : MonoBehaviour
 {
     public GameObject Smoke;
-    public GameObject gameManager;
 
     void OnCollisionEnter(Collision other)
     {
@@ -13,10 +12,10 @@ public class Pig : MonoBehaviour
         {
             Destroy();
             if(other.gameObject.tag == "Bird") {
-                gameManager.GetComponent<GameManagerV2>().AddScore(10000);
+                GameManagerV2.Instance.AddScore(10000);
                 Debug.Log("add 10000");
             } else {
-                gameManager.GetComponent<GameManagerV2>().AddScore(8000);
+                GameManagerV2.Instance.AddScore(10000);
                 Debug.Log("add 8000");
             }
         }

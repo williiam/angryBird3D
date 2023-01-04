@@ -130,4 +130,4 @@ MonoBehaviour:
   _triggerForce: 0.5
   _explosionRadius: 5
   _explosionForce: 500
-  _particles: {fileID: 683210327174122873, guid: e28ac3b131d1d4e378f1c1cec187084f, type: 3}
+  _particles: {fileID: 4705544570332516762, guid: e061811c8e4a841dd9f3600d27547f3d, type: 3}

@@ -8,7 +8,7 @@ public class NextButton : MonoBehaviour
 {
     public AudioClip btnClick;
     public AudioSource btnPlayer;
-    private float btnClickTime = 0.261f;
+    private float btnClickTime = 0.470f;
 
     void Start() {
         btnPlayer = GetComponent<AudioSource>();

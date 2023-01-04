@@ -8,7 +8,7 @@ public class restartBtn : MonoBehaviour
 {
     public AudioClip btnClick;
     public AudioSource btnPlayer;
-    private float btnClickTime = 0.261f;
+    private float btnClickTime = 0.470f;
     // Start is called before the first frame update
     void Start()
     {
