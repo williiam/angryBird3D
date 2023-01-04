@@ -56,7 +56,12 @@ public class BirdManager : MonoBehaviour
                 break;
         }
     }
- 
+
+    //public void InitBirds(SceneSettings settings)
+    //{
+        
+    //}
+
     public BaseBird GetCurrentBird()
     {
         return currentBird;

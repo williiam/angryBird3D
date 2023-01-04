@@ -12,6 +12,8 @@ using Text = TMPro.TextMeshProUGUI;
 public class GameManagerV2 : MonoBehaviour
 {
     public static GameManagerV2 Instance;
+    // 關卡設定
+    //public SceneSettings sceneSettings;
     // 發射相關
     public GameObject hook;
     public GameObject StillBird;
@@ -40,7 +42,11 @@ public class GameManagerV2 : MonoBehaviour
     // 2 鳥已經發射且未落地
     // 3 鳥落地(3秒後變為0)
     public bool gameStatus;
-    
+
+    private void Awake()
+    {
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -70,7 +76,7 @@ public class GameManagerV2 : MonoBehaviour
         failedPanel.transform.localScale = Vector3.zero;
 
         // 設置待命鳥
-        // hook.GetComponent<ShootController>().generateBird();
+        //BirdManager.Instance.InitBirds(sceneSettings);
 
         // 先計算出關卡總分
         int pigQuan = GameObject.FindGameObjectsWithTag("Pig").Length;

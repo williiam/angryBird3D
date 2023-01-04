@@ -9,7 +9,7 @@ public class resumeBtn : MonoBehaviour
     public GameObject optionBtn;
     public AudioClip btnClick;
     public AudioSource btnPlayer;
-    public GameObject gameManager;
+    public GameManagerV2 gameManager;
     public AudioSource GMplayer;
     private float menuRate = 1f;
     private float btnClickTime = 0.470f;

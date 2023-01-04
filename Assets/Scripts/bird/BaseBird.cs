@@ -12,8 +12,6 @@ public class BaseBird : MonoBehaviour
     public AudioSource BirdPlayer;
     public float ReleaseTime = 0.5f;
     public float DestructionTime = 5f;
-
-
     public float force;
 
     void Start() {
@@ -22,10 +20,6 @@ public class BaseBird : MonoBehaviour
 
     public void Release() {
         StartCoroutine(ReleaseCoroutine());
-    }
-
-    public void castSkill() {
-        Rb.AddForce(transform.forward * 1000);
     }
 
     public virtual void OnCollisionEnter(Collision collision)
