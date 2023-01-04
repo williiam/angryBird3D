@@ -5,7 +5,7 @@ using UnityEngine;
 public class Explosive : MonoBehaviour
 {
     [SerializeField] private float _triggerForce = 0.5f;
-    [SerializeField] private float _explosionRadius = 5;
+    [SerializeField] private float _explosionRadius = 10;
     [SerializeField] private float _explosionForce = 500;
     [SerializeField] private GameObject _particles;
  
