@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.08959001, g: 0.072755024, b: 0.14544204, a: 1}
+  m_IndirectSpecularColor: {r: 0.08988392, g: 0.0730543, b: 0.14573301, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -257,8 +257,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 94014607}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -137.91, y: 3.34, z: -124.46}
+  m_LocalRotation: {x: 0.11027187, y: -0.004485714, z: 0.00049768836, w: 0.99389124}
+  m_LocalPosition: {x: -137.82, y: 5.58, z: -124.43}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -306,6 +306,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2390835356526262058, guid: 075b373e9887c44e095f7c3d2135ee22, type: 3}
+      propertyPath: m_StandbyUpdate
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5832592216129898397, guid: 075b373e9887c44e095f7c3d2135ee22, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -384,18 +388,35 @@ PrefabInstance:
       objectReference: {fileID: 1659459227}
     - target: {fileID: 8384727934320282231, guid: 075b373e9887c44e095f7c3d2135ee22, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10
+      value: 9.970001
       objectReference: {fileID: 0}
     - target: {fileID: 8384727934320282231, guid: 075b373e9887c44e095f7c3d2135ee22, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.08999634
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8384727934320282231, guid: 075b373e9887c44e095f7c3d2135ee22, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.3400002
+      value: 5.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 8384727934320282231, guid: 075b373e9887c44e095f7c3d2135ee22, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.43981567
+      objectReference: {fileID: 0}
+    - target: {fileID: 8384727934320282231, guid: 075b373e9887c44e095f7c3d2135ee22, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.5495899
+      objectReference: {fileID: 0}
+    - target: {fileID: 8384727934320282231, guid: 075b373e9887c44e095f7c3d2135ee22, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.55457324
+      objectReference: {fileID: 0}
+    - target: {fileID: 8384727934320282231, guid: 075b373e9887c44e095f7c3d2135ee22, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.4438037
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1693658416252576892, guid: 075b373e9887c44e095f7c3d2135ee22, type: 3}
+    - {fileID: 132460427818419860, guid: 075b373e9887c44e095f7c3d2135ee22, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 075b373e9887c44e095f7c3d2135ee22, type: 3}
 --- !u!1 &241551890 stripped
 GameObject:

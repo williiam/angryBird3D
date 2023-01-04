@@ -19,6 +19,9 @@ public class ShootController : MonoBehaviour
     private GameObject RightPoint;
 
     [SerializeField]
+    private GameObject CameraInitialPosition;
+
+    [SerializeField]
     private LineRenderer ShootLine;
 
     [SerializeField]
@@ -132,7 +135,7 @@ public class ShootController : MonoBehaviour
         int stage = GameManagerV2.Instance.getCameraStatus();
         Vector3 forceInit = (Input.mousePosition - mousePressDownPos);
         Vector3 forceV = (new Vector3(forceInit.x, forceInit.y, forceInit.y)) * forceMultiplier;
-        Vector3 newPos = startPosition + (( new Vector3(forceInit.x, forceInit.y, forceInit.y) / rb.mass ) * Time.fixedDeltaTime);
+        Vector3 newPos = startPosition + (( new Vector3(forceInit.x, forceInit.y, 1.5f * forceInit.y) / rb.mass ) * Time.fixedDeltaTime);
         if(newPos.y < 1) newPos.y = 1;
         if(stage == 1) bird.GetComponent<Transform>().position = newPos;
 
@@ -144,7 +147,7 @@ public class ShootController : MonoBehaviour
     {
         shootPlayer.PlayOneShot(Flying);
         Rigidbody _rb = bird.GetComponent<Rigidbody>();
-        Vector3 force = new Vector3(Force.x, Force.y, Force.y) * forceMultiplier;
+        Vector3 force = new Vector3(Force.x, Force.y, 1.5f * Force.y) * forceMultiplier;
         _rb.AddForce(force);
         TrajectoryDrawer.Instance.ClearTrajectory();
         bird.Release();
