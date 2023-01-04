@@ -81,7 +81,7 @@ public class BirdManager : MonoBehaviour
     //}
 
     // 發射一隻鳥，將該鳥種類-1，並將該鳥種類的鳥數量text更新   
-    public void onBirdShoot(BaseBird bird)
+    public void OnBirdShoot(BaseBird bird)
     {
         if (Ready)
         {

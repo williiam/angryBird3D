@@ -15,10 +15,7 @@ public class BaseBird : MonoBehaviour
     public float ReleaseTime = 0.5f;
     public float DestructionTime = 5f;
     public float force;
-    
-
-  
-
+   
     void Start() {
         BirdPlayer = GetComponent<AudioSource>();
     }

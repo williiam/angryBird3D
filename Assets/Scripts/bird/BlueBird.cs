@@ -5,7 +5,10 @@ using UnityEngine;
 public class BlueBird : BaseBird
 {
    public BaseBird splitBird;
-    public string birdType = "blue";
+    private void Awake()
+    {
+        birdType = "blue";
+    }
 
     public override void CastSpell(){
        //分裂

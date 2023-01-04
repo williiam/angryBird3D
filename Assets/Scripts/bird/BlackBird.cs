@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class BlackBird : BaseBird
 {
-    public string birdType = "black";
+
+    private void Awake()
+    {
+        birdType = "black";
+    } 
 
     public override void CastSpell(){
         // 使此鳥爆炸

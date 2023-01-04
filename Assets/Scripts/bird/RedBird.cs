@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class RedBird : BaseBird
 {
-    public string birdType = "red";
+    private void Awake()
+    {
+        birdType = "red";
+    }
     public override void CastSpell(){
         // Rb.AddForce(transform.forward * 1000);
         this.transform.localScale = new Vector3(3f, 3f, 3f);
