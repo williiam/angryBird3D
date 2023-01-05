@@ -79,7 +79,7 @@ public class BirdManager : MonoBehaviour
         switch (level)
         {
             case 0:
-                remainRedBirds = 1;
+                remainRedBirds = 2;
                 remainYellowBirds = 1;
                 remainBLueBirds = 1;
                 remainBlackBirds = 1;
@@ -87,38 +87,38 @@ public class BirdManager : MonoBehaviour
             case 1:
                 remainRedBirds = 1;
                 remainYellowBirds = 1;
-                remainBLueBirds = 1;
+                remainBLueBirds = 2;
                 remainBlackBirds = 1;
                 break;
             case 2:
-                remainRedBirds = 1;
-                remainYellowBirds = 1;
+                remainRedBirds = 2;
+                remainYellowBirds = 2;
                 remainBLueBirds = 1;
                 remainBlackBirds = 1;
                 break;
             case 3:
-                remainRedBirds = 1;
-                remainYellowBirds = 1;
+                remainRedBirds = 2;
+                remainYellowBirds = 2;
                 remainBLueBirds = 1;
                 remainBlackBirds = 1;
                 break;
             case 4:
-                remainRedBirds = 1;
-                remainYellowBirds = 1;
-                remainBLueBirds = 1;
-                remainBlackBirds = 1;
+                remainRedBirds = 2;
+                remainYellowBirds = 2;
+                remainBLueBirds = 3;
+                remainBlackBirds = 2;
                 break;
             case 5:
-                remainRedBirds = 1;
-                remainYellowBirds = 1;
-                remainBLueBirds = 1;
+                remainRedBirds = 2;
+                remainYellowBirds = 2;
+                remainBLueBirds = 2;
                 remainBlackBirds = 1;
                 break;
             case 6:
-                remainRedBirds = 1;
-                remainYellowBirds = 1;
-                remainBLueBirds = 1;
-                remainBlackBirds = 1;
+                remainRedBirds = 2;
+                remainYellowBirds = 3;
+                remainBLueBirds = 3;
+                remainBlackBirds = 2;
                 break;
             default:
                 remainRedBirds = 1;
