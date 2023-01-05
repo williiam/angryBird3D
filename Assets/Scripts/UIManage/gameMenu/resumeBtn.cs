@@ -11,7 +11,7 @@ public class resumeBtn : MonoBehaviour
     public AudioSource btnPlayer;
     public GameManagerV2 gameManager;
     public AudioSource GMplayer;
-    private float menuRate = 1f;
+    private float menuRate = 3f;
     private float btnClickTime = 0.470f;
     // Start is called before the first frame update
 

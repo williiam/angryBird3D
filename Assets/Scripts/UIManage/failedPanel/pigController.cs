@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class pigController : MonoBehaviour
 {
     public Image pig;
-    private float pigRate = 0.5f;
+    private float pigRate = 1.5f;
     // Start is called before the first frame update
     void Start()
     {
