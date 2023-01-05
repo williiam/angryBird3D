@@ -68,6 +68,7 @@ public class ShootController : MonoBehaviour
     void Update()
     {
         int stage = GameManagerV2.Instance.getCameraStatus();
+        Debug.Log(stage);
         bird = BirdManager.Instance.GetCurrentBird();
 
         if(bird == null) {
@@ -136,8 +137,9 @@ public class ShootController : MonoBehaviour
         int stage = GameManagerV2.Instance.getCameraStatus();
         Vector3 forceInit = (Input.mousePosition - mousePressDownPos);
         Vector3 forceV = (new Vector3(forceInit.x, forceInit.y, forceInit.y)) * forceMultiplier;
-        Vector3 newPos = startPosition + (( new Vector3(forceInit.x, forceInit.y, 1.5f * forceInit.y) / rb.mass ) * Time.fixedDeltaTime);
+        Vector3 newPos = startPosition + ((ForceGenerator(forceInit) / rb.mass ) * Time.fixedDeltaTime);
         if(newPos.y < 1) newPos.y = 1;
+        if(newPos.z + 2 > transform.position.z) newPos.z = transform.position.z - 2;
         if(stage == 1) bird.GetComponent<Transform>().position = newPos;
 
         Rigidbody _rb = bird.GetComponent<Rigidbody>();
@@ -148,16 +150,21 @@ public class ShootController : MonoBehaviour
     {
         shootPlayer.PlayOneShot(Flying);
         Rigidbody _rb = bird.GetComponent<Rigidbody>();
-        Vector3 force = new Vector3(Force.x, Force.y, 1.5f * Force.y) * forceMultiplier;
+        Vector3 force = ForceGenerator(Force)  * forceMultiplier;
         _rb.AddForce(force);
         TrajectoryDrawer.Instance.ClearTrajectory();
         bird.Release();
     }
 
+    private Vector3 ForceGenerator(Vector3 initForce) {
+        Debug.Log(initForce);
+        return new Vector3(initForce.x, initForce.y, 1.5f * initForce.y);
+    }
+
     // public methods
     public int GetStage()
     {
-        return GameManagerV2.Instance.getCameraStatus();;
+        return GameManagerV2.Instance.getCameraStatus();
     }
 
     public int SetStage(int newStage)
