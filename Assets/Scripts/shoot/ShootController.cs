@@ -135,7 +135,7 @@ public class ShootController : MonoBehaviour
         int stage = GameManagerV2.Instance.getCameraStatus();
         Vector3 forceInit = (Input.mousePosition - mousePressDownPos);
         Vector3 forceV = (new Vector3(forceInit.x, forceInit.y, forceInit.y)) * forceMultiplier;
-        Vector3 newPos = startPosition + (( new Vector3(forceInit.x, forceInit.y, 1.5f * forceInit.y) / rb.mass ) * Time.fixedDeltaTime);
+        Vector3 newPos = startPosition + (( new Vector3(forceInit.x, forceInit.y, 2f * forceInit.y) / rb.mass ) * Time.fixedDeltaTime);
         if(newPos.y < 1) newPos.y = 1;
         if(stage == 1) bird.GetComponent<Transform>().position = newPos;
 
