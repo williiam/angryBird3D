@@ -74,8 +74,8 @@ public class GameManagerV2 : MonoBehaviour
         completePanel.transform.localScale = Vector3.zero;
         failedPanel.transform.localScale = Vector3.zero;
 
-        // 設置待命鳥
-        //BirdManager.Instance.InitBirds(sceneSettings);
+        // 顯示鳥MENU
+        BirdMenu.Instance.gameObject.SetActive(true);
 
         // 先計算出關卡總分
         int pigQuan = GameObject.FindGameObjectsWithTag("Pig").Length;
@@ -188,12 +188,14 @@ public class GameManagerV2 : MonoBehaviour
         StartCoroutine(ShowPanel(completePanel));
         GMplayer.PlayOneShot(levelComplete);
         PlayerPrefs.SetInt("levelUnlock", level);
+        BirdMenu.Instance.gameObject.SetActive(false);
     }
 
     private void LevelFailed() {
         // 遊戲失敗，顯示遊戲失敗面板
         StartCoroutine(ShowPanel(failedPanel));
         GMplayer.PlayOneShot(levelFailed);
+        BirdMenu.Instance.gameObject.SetActive(false);
     }
 
     IEnumerator ShowPanel(GameObject panel) {

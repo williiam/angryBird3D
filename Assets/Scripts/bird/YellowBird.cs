@@ -9,19 +9,7 @@ public class YellowBird : BaseBird
         birdType = "yellow";
     }
     public override void CastSpell(){
-        updateIsCastSpell();
         Vector3 velocity = Rb.velocity;
-        Rb.AddForce(velocity * 1000);
+        Rb.AddForce(velocity * 200);
    }
-
-   // onClick
-    // 點擊後，使在彈弓上生成一隻當前種類的待射鳥
-    private void OnMouseDown()
-    { 
-        var bird = BirdManager.Instance.GetCurrentBird();
-        if(bird!=null&&bird.GetType()== typeof(YellowBird)){
-            return;
-        }
-        BirdManager.Instance.SetCurrentBird("yellow");
-    }
 }

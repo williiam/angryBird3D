@@ -1,13 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class BirdOnClick : MonoBehaviour
+public class BirdBtnController : MonoBehaviour
 {
+
+    public static BirdBtnController Instance;
+    void Awake()
+    {
+        Instance = this;
+    }
     // Start is called before the first frame update
     void Start()
     {
-
     }
 
     // Update is called once per frame
@@ -50,6 +56,7 @@ public class BirdOnClick : MonoBehaviour
         {
             return;
         }
+
         BirdManager.Instance.SetCurrentBird("black");
     }
 }

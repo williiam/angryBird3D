@@ -2,6 +2,8 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Text = TMPro.TextMeshProUGUI;
+using UnityEngine.UI;
+
 public class BirdManager : MonoBehaviour
 {
 
@@ -56,7 +58,7 @@ public class BirdManager : MonoBehaviour
         remainYellowBirdsText = remainYellowBirdsBtn.GetComponentInChildren<Text>();
         remainBlueBirdsText = remainBlueBirdsBtn.GetComponentInChildren<Text>();
         remainBlackBirdsText = remainBlackBirdsBtn.GetComponentInChildren<Text>();
-        
+
     }
 
     void Start()
@@ -158,25 +160,46 @@ public class BirdManager : MonoBehaviour
     // 更新全部鳥的剩餘數量(用字串模板)
     public void UpdateRemainBirdsText()
     {
-        // 若紅鳥歸0,將紅鳥按鈕設為不可用
-        if (remainRedBirds <= 0)
-        {
-            getBirdBtn("red").SetActive(false);
-        }if (remainYellowBirds <= 0)
-        {
-            getBirdBtn("yellow").SetActive(false);
-        }if (remainBLueBirds <= 0)
-        {
-            getBirdBtn("blue").SetActive(false);
-        }if (remainBlackBirds <= 0)
-        {
-            getBirdBtn("black").SetActive(false);
-        }
-        
         remainRedBirdsText.text = $"X{remainRedBirds}";
         remainYellowBirdsText.text = $"X{remainYellowBirds}";
         remainBlueBirdsText.text = $"X{remainBLueBirds}";
         remainBlackBirdsText.text = $"X{remainBlackBirds}";
+        
+        // 若紅鳥歸0,將紅鳥按鈕設為不可用
+        if (remainRedBirds <= 0)
+        {
+            getBirdBtn("red").GetComponent<Button>().interactable = false;
+        }
+        else
+        {
+            getBirdBtn("red").GetComponent<Button>().interactable = true;
+        }
+
+        if (remainYellowBirds <= 0)
+        {
+            getBirdBtn("yellow").GetComponent<Button>().interactable = false;
+        }
+        else
+        {
+            getBirdBtn("yellow").GetComponent<Button>().interactable = true;
+        }
+
+        if (remainBLueBirds <= 0)
+        {
+            getBirdBtn("blue").GetComponent<Button>().interactable = false;
+        }
+        else
+        {
+            getBirdBtn("blue").GetComponent<Button>().interactable = true;
+        }
+        if (remainBlackBirds <= 0)
+        {
+            getBirdBtn("black").GetComponent<Button>().interactable = false;
+        }
+        else
+        {
+            getBirdBtn("black").GetComponent<Button>().interactable = true;
+        }
     }
 
     public BaseBird GetCurrentBird()

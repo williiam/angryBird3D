@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class BlackBird : BaseBird
 {
-    [SerializeField] private float _explosionRadius = 10;
+    [SerializeField] private float _explosionRadius = 100;
     [SerializeField] private float _explosionForce = 500;
-    [SerializeField] private GameObject _particles;
+    [SerializeField] public ParticleSystem _particles;
 
     private void Awake()
     {
@@ -19,7 +19,6 @@ public class BlackBird : BaseBird
         //this.transform.localScale = new Vector3(15f, 15f, 15f);
 
         Debug.Log("BlackBird CastSpell");
-        updateIsCastSpell();
         var surroundingObjects = Physics.OverlapSphere(transform.position, _explosionRadius);
         foreach (var obj in surroundingObjects)
         {
@@ -29,20 +28,9 @@ public class BlackBird : BaseBird
             rb.AddExplosionForce(_explosionForce, transform.position, _explosionRadius, 1);
         }
         Instantiate(_particles, transform.position, Quaternion.identity);
-        this.transform.localScale = new Vector3(1f, 1f, 1f);
-        ParticleSystem Explosion = GetComponent<ParticleSystem>();
+        // ParticleSystem Explosion = GetComponent<ParticleSystem>();
         this.transform.localScale = new Vector3(0f, 0f, 0f);
-        Explosion.Play();
-    }
-
-    // onClick
-    // 點擊後，使在彈弓上生成一隻當前種類的待射鳥
-    private void OnMouseDown()
-    {
-        var bird = BirdManager.Instance.GetCurrentBird();
-        if(bird!=null&&bird.GetType()== typeof(BlackBird)){
-            return;
-        }
-        BirdManager.Instance.SetCurrentBird("black");
+        _particles.Play();
+        onBirdDestroy();
     }
 }

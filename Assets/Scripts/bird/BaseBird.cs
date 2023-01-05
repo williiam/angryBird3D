@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseBird : MonoBehaviour 
+public class BaseBird : MonoBehaviour
 {
-   
+    public GameObject skillBtn;
     public Rigidbody Rb;
     public GameObject Feathers;
     public GameObject FeatherExplosion;
@@ -16,12 +16,14 @@ public class BaseBird : MonoBehaviour
     public float DestructionTime = 5f;
     public float force;
     public bool spellIsCasted = false;
-   
-    void Start() {
+
+    void Start()
+    {
         BirdPlayer = GetComponent<AudioSource>();
     }
 
-    public void Release() {
+    public void Release()
+    {
         StartCoroutine(ReleaseCoroutine());
     }
 
@@ -39,22 +41,32 @@ public class BaseBird : MonoBehaviour
         }
     }
 
-    virtual public void CastSpell() {
+    public void OnSkillBtnClick()
+    {
+        SkillBtnController.Instance.DisableSkillBtn();
+        CastSpell();
+    }
+
+    virtual public void CastSpell()
+    {
         // 往前衝刺
         Rb.AddForce(transform.forward * 1000);
     }
 
-    public void updateIsCastSpell() {
-        if (Input.GetMouseButtonDown(0) && !spellIsCasted) {
-            CastSpell();
-            spellIsCasted = true;
-        }
+    protected void onBirdDestroy()
+    {
+        BirdManager.Instance.SetReady(true);
+        Instantiate(FeatherExplosion, transform.position, Quaternion.identity);
+        Destroy(GetComponent<SpringJoint>());
+        Destroy(gameObject);
+        GameManagerV2.Instance.CheckGameStatus();
+        SkillBtnController.Instance.EnableSkillBtn();
+        ShootController.Instance.SetStage(0);
     }
 
     IEnumerator ReleaseCoroutine()
     {
         yield return new WaitForSeconds(ReleaseTime);
-
         Destroy(GetComponent<SpringJoint>());
         StartCoroutine(ExplodCoroutine());
     }
@@ -62,9 +74,18 @@ public class BaseBird : MonoBehaviour
     IEnumerator ExplodCoroutine()
     {
         yield return new WaitForSeconds(DestructionTime);
-        BirdManager.Instance.SetReady(true);
-        Instantiate(FeatherExplosion, transform.position, Quaternion.identity);
-        Destroy(gameObject);
-        GameManagerV2.Instance.CheckGameStatus();
+        onBirdDestroy();
+    }
+
+    // 點此鳥發出叫聲
+    public void OnClick()
+    {
+        if (BirdPlayer.isPlaying)
+        {
+            BirdPlayer.Stop();
+        }
+        BirdPlayer.Play();
     }
 }
+
+

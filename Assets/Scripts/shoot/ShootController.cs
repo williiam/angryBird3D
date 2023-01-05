@@ -69,6 +69,12 @@ public class ShootController : MonoBehaviour
     {
         int stage = GameManagerV2.Instance.getCameraStatus();
         bird = BirdManager.Instance.GetCurrentBird();
+        if(stage == 0||stage == 1) {
+            BirdMenu.Instance.gameObject.SetActive(true);
+        }
+        else if(stage == 2){
+            BirdMenu.Instance.gameObject.SetActive(false);
+        }
 
         if(bird == null) {
             vCm.Follow = transform;
@@ -102,7 +108,6 @@ public class ShootController : MonoBehaviour
             vCm.Follow = bird.GetComponent<Transform>();
             vCm.LookAt = bird.GetComponent<Transform>();
         }
-
     }
 
     void OnMouseDown()
@@ -112,7 +117,7 @@ public class ShootController : MonoBehaviour
         }
         shootPlayer.PlayOneShot(Slingshot);
         BirdManager.Instance.SetReady(true);
-        bird = BirdManager.Instance.GetCurrentBird();
+        bird = BirdManager.Instance.GetCurrentBird();            
         mousePressDownPos = Input.mousePosition;
         SetStage(1);
     }
