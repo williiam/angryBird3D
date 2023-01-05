@@ -29,7 +29,7 @@ public class BaseBird : MonoBehaviour
 
     public virtual void OnCollisionEnter(Collision collision)
     {
-        if (!collision.collider.CompareTag("Ground"))
+        if (!collision.collider.CompareTag("Ground") && GameManagerV2.Instance.getCameraStatus() == 2)
         {
             GameObject feathers = Instantiate(Feathers, transform.position, Quaternion.identity);
             Destroy(feathers, 2);

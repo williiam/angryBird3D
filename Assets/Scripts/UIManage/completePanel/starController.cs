@@ -8,7 +8,7 @@ public class starController : MonoBehaviour
     public Image star1;
     public Image star2;
     public Image star3;
-    private float starRate = 0.5f;
+    private float starRate = 1.5f;
     // Start is called before the first frame update
     void Start()
     {

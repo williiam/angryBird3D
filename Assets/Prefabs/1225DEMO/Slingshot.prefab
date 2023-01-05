@@ -24,8 +24,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5185094935886658573}
-  m_LocalRotation: {x: 0.49999827, y: -0.49999863, z: -0.5000048, w: 0.49999827}
-  m_LocalPosition: {x: 6, y: 0.58999634, z: 3.4099998}
+  m_LocalRotation: {x: 0.5636693, y: -0.5721874, z: -0.4243824, w: 0.41806465}
+  m_LocalPosition: {x: 6, y: 0, z: 5.16}
   m_LocalScale: {x: 1.0000001, y: 1, z: 1.0000001}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -305,6 +305,7 @@ GameObject:
   - component: {fileID: 5832592216129898398}
   - component: {fileID: 5832592216129898399}
   - component: {fileID: 5832592216129898464}
+  - component: {fileID: 4874165738236654835}
   m_Layer: 0
   m_Name: Slingshot
   m_TagString: Untagged
@@ -397,6 +398,18 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 5192874587645291261, guid: 376eb7a5d51284526a72512faeeaba81, type: 3}
+--- !u!114 &4874165738236654835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5832592216129898465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 302748bab458f38419d6abbe14cbc66e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5832592216570390587
 GameObject:
   m_ObjectHideFlags: 0
@@ -499,6 +512,18 @@ MonoBehaviour:
   blueBird: {fileID: 6601348660417787829, guid: 4eb80e7bafff5462e979855111150c45, type: 3}
   blackBird: {fileID: 2594683776963910047, guid: 8407bb5ab9ca6492dbbf1beb9738f484, type: 3}
   pinkBird: {fileID: 8722709293629901678, guid: 0b36a86d6e01c40adb5a886868f2ff88, type: 3}
+  remainRedBirds: 1
+  remainYellowBirds: 1
+  remainBLueBirds: 1
+  remainBlackBirds: 1
+  remainRedBirdsBtn: {fileID: 0}
+  remainYellowBirdsBtn: {fileID: 0}
+  remainBlueBirdsBtn: {fileID: 0}
+  remainBlackBirdsBtn: {fileID: 0}
+  remainRedBirdsText: {fileID: 0}
+  remainYellowBirdsText: {fileID: 0}
+  remainBlueBirdsText: {fileID: 0}
+  remainBlackBirdsText: {fileID: 0}
 --- !u!1 &9129001830384967775
 GameObject:
   m_ObjectHideFlags: 0
@@ -558,7 +583,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 4
-  m_FollowOffset: {x: -0.58999634, y: -0.05, z: -6}
+  m_FollowOffset: {x: 0, y: 1.7, z: -6}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1

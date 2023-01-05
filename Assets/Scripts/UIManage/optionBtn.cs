@@ -10,7 +10,7 @@ public class optionBtn : MonoBehaviour
     public AudioSource btnPlayer;
     public GameManagerV2 gameManager;
     public AudioSource GMplayer;
-    private float menuRate = 1f;
+    private float menuRate = 3f;
     // Start is called before the first frame update
     void Start()
     {
