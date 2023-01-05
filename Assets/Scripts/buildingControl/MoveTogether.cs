@@ -21,12 +21,14 @@ public class MoveTogether : MonoBehaviour
 
     void Start()
     {
-        if (boss){
-            Debug.Log("BigBoss is exists");
+        boss = GameObject.Find("PigBoss");
+        Debug.Log(boss);
+        if(boss == null){
+            
+            TargetNextWaypoint();
         }
-
-        TargetNextWaypoint();
     }
+
     void FixedUpdate()
     {
         _elapsedTime += Time.deltaTime;

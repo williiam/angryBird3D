@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ForceField : MonoBehaviour
+public class ForceField2 : MonoBehaviour
 {
     public GameObject forceField;
     // fade speed length
@@ -13,9 +13,14 @@ public class ForceField : MonoBehaviour
     private bool flag = true;
     void Start() 
     {
-        forceField = GameObject.Find("HexgonSphere");
-        material = forceField.GetComponent<Renderer>().material;
-        material.SetColor("_MainColor", new Color(1f,1f,1f,1f));
+        //if(forceField == null){
+            forceField = GameObject.Find("HexgonSphere2");
+        //}
+
+        //foreach(GameObject forcefield in forceField){
+            material = forceField.GetComponent<Renderer>().material;
+            material.SetColor("_MainColor", new Color(1f,1f,1f,1f));
+        //}
     }
 
     void Update()
@@ -27,17 +32,20 @@ public class ForceField : MonoBehaviour
 
     IEnumerator fadeInOut()
     {
-        flag = false;
-        // fade out
-        yield return Fade(material, 0f);
-        // wait
-        yield return new WaitForSeconds(fadePause);
-        // fade in
-        forceField.SetActive(true);
-        yield return Fade(material, 1f);
-        // wait
-        yield return new WaitForSeconds(fadePause);
-        flag = true;
+        //foreach(GameObject forcefield in forceField){
+            flag = false;
+            // fade out
+            yield return Fade(material, 0f);
+            //forcefield.SetActive(false);
+            // wait
+            yield return new WaitForSeconds(fadePause);
+            // fade in
+            forceField.SetActive(true);
+            yield return Fade(material, 1f);
+            // wait
+            yield return new WaitForSeconds(fadePause);
+            flag = true;
+        //}
     }
 
     IEnumerator Fade(Material mat, float targetAlpha)
@@ -50,15 +58,18 @@ public class ForceField : MonoBehaviour
                 mat.SetColor("_MainColor", new Color(newAlpha, newAlpha, newAlpha, newAlpha));
                 yield return null;
             }
-        } else {
+        } 
+        else 
+        {
             while(newAlpha > targetAlpha)
             {
                 newAlpha -= fadeSpeed * Time.deltaTime;
                 mat.SetColor("_MainColor", new Color(newAlpha, newAlpha, newAlpha, newAlpha));
                 yield return null;
             }
-            forceField.SetActive(false);
+            // foreach(GameObject field in forceField){
+                forceField.SetActive(false);
+            // }
         }
     }
-
 }
