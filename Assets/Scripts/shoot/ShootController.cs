@@ -111,7 +111,7 @@ public class ShootController : MonoBehaviour
             return;
         }
         shootPlayer.PlayOneShot(Slingshot);
-        BirdManager.Instance.setReady(false);
+        BirdManager.Instance.SetReady(true);
         bird = BirdManager.Instance.GetCurrentBird();
         mousePressDownPos = Input.mousePosition;
         SetStage(1);
@@ -126,6 +126,7 @@ public class ShootController : MonoBehaviour
          SetStage(2);
         mouseReleasePos = Input.mousePosition;
         Shoot(mousePressDownPos - mouseReleasePos);
+        BirdManager.Instance.OnBirdShoot();
     }
 
     void OnMouseDrag() {
@@ -135,7 +136,7 @@ public class ShootController : MonoBehaviour
         int stage = GameManagerV2.Instance.getCameraStatus();
         Vector3 forceInit = (Input.mousePosition - mousePressDownPos);
         Vector3 forceV = (new Vector3(forceInit.x, forceInit.y, forceInit.y)) * forceMultiplier;
-        Vector3 newPos = startPosition + (( new Vector3(forceInit.x, forceInit.y, 2f * forceInit.y) / rb.mass ) * Time.fixedDeltaTime);
+        Vector3 newPos = startPosition + (( new Vector3(forceInit.x, forceInit.y, 1.5f * forceInit.y) / rb.mass ) * Time.fixedDeltaTime);
         if(newPos.y < 1) newPos.y = 1;
         if(stage == 1) bird.GetComponent<Transform>().position = newPos;
 
@@ -151,7 +152,6 @@ public class ShootController : MonoBehaviour
         _rb.AddForce(force);
         TrajectoryDrawer.Instance.ClearTrajectory();
         bird.Release();
-        GameManagerV2.Instance.SetRemainingBirds(GameManagerV2.Instance.GetRemainingBirds() - 1);
     }
 
     // public methods

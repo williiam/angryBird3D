@@ -54,7 +54,7 @@ public class BaseBird : MonoBehaviour
     IEnumerator ExplodCoroutine()
     {
         yield return new WaitForSeconds(DestructionTime);
-
+        BirdManager.Instance.SetReady(true);
         Instantiate(FeatherExplosion, transform.position, Quaternion.identity);
         Destroy(gameObject);
         GameManagerV2.Instance.CheckGameStatus();

@@ -32,20 +32,18 @@ public class ForceField3 : MonoBehaviour
 
     IEnumerator fadeInOut()
     {
-        //foreach(GameObject forcefield in forceField){
-            flag = false;
-            // fade out
-            yield return Fade(material, 0f);
-            //forcefield.SetActive(false);
-            // wait
-            yield return new WaitForSeconds(fadePause);
-            // fade in
-            forceField.SetActive(true);
-            yield return Fade(material, 1f);
-            // wait
-            yield return new WaitForSeconds(fadePause);
-            flag = true;
-        //}
+        flag = false;
+        // fade in
+        forceField.SetActive(true);
+        yield return Fade(material, 1f);
+        // wait
+        yield return new WaitForSeconds(fadePause);
+        // fade out
+        yield return Fade(material, 0f);
+        //forcefield.SetActive(false);
+        // wait
+        yield return new WaitForSeconds(fadePause);
+        flag = true;
     }
 
     IEnumerator Fade(Material mat, float targetAlpha)

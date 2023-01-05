@@ -33,7 +33,6 @@ public class GameManagerV2 : MonoBehaviour
     // 遊戲變數
     public int score = 0;
     public int totalScore = 0;
-    public int remainingBirds = 0;
     public int level;
     public float panelRate = 3f;
     private int cameraStatus = 0; 
@@ -81,7 +80,7 @@ public class GameManagerV2 : MonoBehaviour
         // 先計算出關卡總分
         int pigQuan = GameObject.FindGameObjectsWithTag("Pig").Length;
         totalScore += pigQuan * 10000;
-        totalScore += remainingBirds * 5000;
+        totalScore += BirdManager.Instance.RemainBirds * 5000;
         // TODO: totalScore += 加分物件數量 * 加分物件得分 
     }
 
@@ -98,7 +97,7 @@ public class GameManagerV2 : MonoBehaviour
         if(remainingPigs == 0) {
             gameStatus = false;
             // 剩餘的鳥每隻+5000分
-            for(int i = 0; i < remainingBirds; ++i) {
+            for(int i = 0; i < BirdManager.Instance.RemainBirds; ++i) {
                 AddScore(5000);
             }
             // 停止遊戲音樂，播放通關音效
@@ -109,7 +108,7 @@ public class GameManagerV2 : MonoBehaviour
             skillBtn.transform.localScale = Vector3.zero;
             Invoke("LevelComplete", 5.112f);    // levelClear is 5.112sec
         }
-        else if(remainingBirds == 0 && remainingPigs != 0) {
+        else if(BirdManager.Instance.RemainBirds == 0 && remainingPigs != 0) {
             // 如果沒有鳥但還有豬則遊戲失敗
             gameStatus = false;
             // 停止遊戲音樂，播放失敗音效
@@ -152,7 +151,7 @@ public class GameManagerV2 : MonoBehaviour
                     }
                 }
                 if(canBreak) {
-                    BirdManager.Instance.setReady(true);
+                    BirdManager.Instance.SetReady(true);
                     break;
                 }
             }
@@ -182,14 +181,6 @@ public class GameManagerV2 : MonoBehaviour
 
     public int GetTotalScore() {
         return totalScore;
-    }
-
-    public void SetRemainingBirds(int n) {
-        remainingBirds = n;
-    }
-
-    public int GetRemainingBirds() {
-        return remainingBirds;
     }
 
     private void LevelComplete() {
@@ -241,38 +232,4 @@ public class GameManagerV2 : MonoBehaviour
         // 遊戲暫停
         Time.timeScale = 0;
     }
-
-    /*
-    public void SetNewBird()
-    {
-        // 先檢查遊戲狀態,若非進行中則return
-        CheckGameStatus();
-        if(!gameStatus)
-            return;
-
-        remainingBirds--;
-        if (remainingBirds >= 0)
-        {
-            sp.GetComponent<ShootController>().generateBird();
-            // 刪除所有待命鳥
-            foreach (StillBird stillBird in FindObjectsOfType<StillBird>())
-            {
-                Destroy(stillBird.gameObject);
-            }
-            // 重新生成待命鳥
-            if (remainingBirds > 0)
-            {
-                for (int i = 0; i < remainingBirds; i++)
-                {
-                    GameObject stillBird = Instantiate(StillBird, new Vector3(0, 0, 0), Quaternion.identity);
-                    stillBird.transform.Find("Bird Body").transform.position = new Vector3(-2.5f * (i + 1), 0, -3.19f);
-                    if (i % 2 == 0)
-                    {
-                        stillBird.GetComponent<StillBird>().WaitForSeconds = 0.45f;
-                    }
-                }
-            }
-        }
-    }
-    */
 }

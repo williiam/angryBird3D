@@ -5,22 +5,28 @@ using UnityEngine;
 public class ForceField : MonoBehaviour
 {
     public GameObject forceField;
+    public AudioSource fieldPlayer;
+    public AudioClip forceVoice;
     // fade speed length
     private float fadeSpeed = 0.5f;
     //Pause length between fades
     private float fadePause = 2f;
     private Material material;
     private bool flag = true;
+    private float v;
+    
     void Start() 
     {
+        fieldPlayer = GetComponent<AudioSource>();
         //if(forceField == null){
             forceField = GameObject.Find("HexgonSphere");
         //}
 
         //foreach(GameObject forcefield in forceField){
             material = forceField.GetComponent<Renderer>().material;
-            material.SetColor("_MainColor", new Color(1f,1f,1f,1f));
+            material.SetColor("_MainColor", new Color(0f,0f,0f,0f));
         //}
+        v = fieldPlayer.volume;
     }
 
     void Update()
@@ -32,20 +38,20 @@ public class ForceField : MonoBehaviour
 
     IEnumerator fadeInOut()
     {
-        //foreach(GameObject forcefield in forceField){
-            flag = false;
-            // fade out
-            yield return Fade(material, 0f);
-            //forcefield.SetActive(false);
-            // wait
-            yield return new WaitForSeconds(fadePause);
-            // fade in
-            forceField.SetActive(true);
-            yield return Fade(material, 1f);
-            // wait
-            yield return new WaitForSeconds(fadePause);
-            flag = true;
-        //}
+        flag = false;
+        // fade in
+        forceField.SetActive(true);
+        fieldPlayer.volume = v;
+        fieldPlayer.PlayOneShot(forceVoice);
+        yield return Fade(material, 1f);
+        // wait
+        yield return new WaitForSeconds(fadePause);
+        // fade out
+        StartCoroutine(AudioFadeout());
+        yield return Fade(material, 0f);
+        // wait
+        yield return new WaitForSeconds(fadePause);    
+        flag = true;
     }
 
     IEnumerator Fade(Material mat, float targetAlpha)
@@ -67,9 +73,19 @@ public class ForceField : MonoBehaviour
                 mat.SetColor("_MainColor", new Color(newAlpha, newAlpha, newAlpha, newAlpha));
                 yield return null;
             }
-            // foreach(GameObject field in forceField){
-                forceField.SetActive(false);
-            // }
+            forceField.SetActive(false);
         }
+    }
+
+    IEnumerator AudioFadeout() 
+    {
+        float head = 2f;
+        while (head >= 0f)
+        {
+            head -= Time.deltaTime;
+            fieldPlayer.volume = v * head;
+            yield return null;
+        }
+        fieldPlayer.Stop();
     }
 }
