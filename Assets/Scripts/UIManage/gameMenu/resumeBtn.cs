@@ -14,8 +14,20 @@ public class resumeBtn : MonoBehaviour
     private float menuRate = 1f;
     private float btnClickTime = 0.470f;
     // Start is called before the first frame update
+    private void Awake()
+    {
+        gameManager = GameManagerV2.Instance;
+    }
+
+    private void setGameManagerV2()
+    {
+        // if game is null
+        gameManager = GameManagerV2.Instance;
+    }
+
     void Start()
     {
+        setGameManagerV2();
         GMplayer = gameManager.GetComponent<AudioSource>();
         btnPlayer = GetComponent<AudioSource>();
         GetComponent<Button>().onClick.AddListener(startcoroutine);

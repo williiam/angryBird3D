@@ -11,9 +11,15 @@ public class optionBtn : MonoBehaviour
     public GameManagerV2 gameManager;
     public AudioSource GMplayer;
     private float menuRate = 1f;
+    private void setGameManagerV2()
+    {
+        // if game is null
+        gameManager = GameManagerV2.Instance;
+    }
     // Start is called before the first frame update
     void Start()
     {
+        setGameManagerV2();
         btnPlayer = GetComponent<AudioSource>();
         GMplayer = gameManager.GetComponent<AudioSource>();
         GetComponent<Button>().onClick.AddListener(startcoroutine);
@@ -26,6 +32,7 @@ public class optionBtn : MonoBehaviour
     }
 
     private void startcoroutine() {
+        setGameManagerV2();
         this.transform.localScale = Vector3.zero;   // initial is 0.4, 2, 1
         // 暫停遊戲背景音
         GMplayer.Stop();

@@ -344,7 +344,6 @@ GameObject:
   - component: {fileID: 7665073270637307592}
   - component: {fileID: 2652930995049912649}
   - component: {fileID: 3541247177245483649}
-  - component: {fileID: 3583202833254696977}
   - component: {fileID: 1991136949618413342}
   - component: {fileID: 8380635554883088506}
   - component: {fileID: 7809631089188524404}
@@ -428,27 +427,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3583202833254696977
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3382736409490388409}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39973111bc37049aeb1097dbe1368832, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Rb: {fileID: 2652930995049912649}
-  Feathers: {fileID: 7163805681297570755, guid: 30916e65eed4c41ca82d907048984617, type: 3}
-  FeatherExplosion: {fileID: 7163805681297570755, guid: e9b911329d1ea4e2eaeab9b4c2cee280, type: 3}
-  birdManager: {fileID: 0}
-  BirdCollision: {fileID: 8300000, guid: a566fe1bc05f44be3b23142d908c3d05, type: 3}
-  BirdPlayer: {fileID: 0}
-  ReleaseTime: 0.5
-  DestructionTime: 5
-  force: 0
 --- !u!96 &1991136949618413342
 TrailRenderer:
   serializedVersion: 2
@@ -662,6 +640,7 @@ MonoBehaviour:
   birdManager: {fileID: 0}
   BirdCollision: {fileID: 8300000, guid: a566fe1bc05f44be3b23142d908c3d05, type: 3}
   BirdPlayer: {fileID: 0}
+  birdType: base
   ReleaseTime: 0.5
   DestructionTime: 5
   force: 0
