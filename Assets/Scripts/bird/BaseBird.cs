@@ -15,6 +15,7 @@ public class BaseBird : MonoBehaviour
     public float ReleaseTime = 0.5f;
     public float DestructionTime = 5f;
     public float force;
+    public bool spellIsCasted = false;
    
     void Start() {
         BirdPlayer = GetComponent<AudioSource>();
@@ -41,6 +42,13 @@ public class BaseBird : MonoBehaviour
     virtual public void CastSpell() {
         // 往前衝刺
         Rb.AddForce(transform.forward * 1000);
+    }
+
+    public void updateIsCastSpell() {
+        if (Input.GetMouseButtonDown(0) && !spellIsCasted) {
+            CastSpell();
+            spellIsCasted = true;
+        }
     }
 
     IEnumerator ReleaseCoroutine()

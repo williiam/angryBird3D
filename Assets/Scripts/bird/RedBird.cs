@@ -10,6 +10,7 @@ public class RedBird : BaseBird
     }
     public override void CastSpell(){
         // Rb.AddForce(transform.forward * 1000);
+        updateIsCastSpell();
         this.transform.localScale = new Vector3(3f, 3f, 3f);
    }
 

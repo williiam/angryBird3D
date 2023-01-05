@@ -21,6 +21,7 @@ public class BlueBird : BaseBird
     // 點擊後，使在彈弓上生成一隻當前種類的待射鳥
     private void OnMouseDown()
     {
+        updateIsCastSpell();
         var bird = BirdManager.Instance.GetCurrentBird();
         if(bird!=null&&bird.GetType()== typeof(BlueBird)){
             return;
