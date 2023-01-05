@@ -19,30 +19,57 @@ public class MoveTogether : MonoBehaviour
 
     private GameObject boss;
 
+    private bool flag = true;
+
     void Start()
     {
         boss = GameObject.Find("PigBoss");
-        Debug.Log(boss);
+        //Debug.Log(boss);
         if(boss == null){
-            
+
             TargetNextWaypoint();
         }
     }
 
     void FixedUpdate()
     {
-        _elapsedTime += Time.deltaTime;
+        boss = GameObject.Find("PigBoss");
 
-        float elapsedPercentage = _elapsedTime / _timeToWaypoint;
+        if(boss == null){
+            if (flag){
+                StartCoroutine(move());
+            }
+        }
+    }
+    IEnumerator move(){
+        flag = false;
+        TargetNextWaypoint();
+        float elapsedPercentage = 0f;
+        while(_elapsedTime < 1f) {
+            //Debug.Log("ppppp" + elapsedPercentage);
+            _elapsedTime += Time.deltaTime * 0.003f;
 
-        elapsedPercentage = Mathf.SmoothStep(0, 1, elapsedPercentage);
-        
-        transform.position = Vector3.Lerp(_previousWaypoint.position, _targetWaypoint.position, elapsedPercentage);
-        
-        if (elapsedPercentage >= 1)
-        {
+            elapsedPercentage = _elapsedTime / _timeToWaypoint;
+
+            elapsedPercentage = Mathf.SmoothStep(0, 1, elapsedPercentage);
+            
+            transform.position = Vector3.Lerp(_previousWaypoint.position, _targetWaypoint.position, elapsedPercentage);
+            //float distance = new Vector3(_targetWaypoint.position.x - _previousWaypoint.position.x, _targetWaypoint.position.y - _previousWaypoint.position.y, _targetWaypoint.position.z - _previousWaypoint.position.z).distance;
+            /*
+            this.transform.position = new Vector3(
+                _previousWaypoint.position.x + (_targetWaypoint.position.x - _previousWaypoint.position.x) * _elapsedTime,
+                _previousWaypoint.position.y + (_targetWaypoint.position.y - _previousWaypoint.position.y) * _elapsedTime,
+                _previousWaypoint.position.z + (_targetWaypoint.position.z - _previousWaypoint.position.z) * _elapsedTime
+            );
+            */
+        }        
+        if (elapsedPercentage >= 1) {
+            
             TargetNextWaypoint();
         }
+        yield return new WaitForSeconds(3f);
+        flag = true;
+        yield break;
     }
 
     void TargetNextWaypoint(){

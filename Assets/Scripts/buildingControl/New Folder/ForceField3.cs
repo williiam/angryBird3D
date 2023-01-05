@@ -8,7 +8,7 @@ public class ForceField3 : MonoBehaviour
     // fade speed length
     private float fadeSpeed = 0.5f;
     //Pause length between fades
-    private float fadePause = 2f;
+    private float fadePause = 3f;
     private Material material;
     private bool flag = true;
     void Start() 

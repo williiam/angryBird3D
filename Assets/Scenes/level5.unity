@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.08999936, g: 0.07317026, b: 0.14584516, a: 1}
+  m_IndirectSpecularColor: {r: 0.08959001, g: 0.072755024, b: 0.14544204, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -204,8 +204,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 286371156808959995, guid: 4e1cb530919e1fb4f84ee20b1380ce73, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 286371156808959995, guid: 4e1cb530919e1fb4f84ee20b1380ce73, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.409996
+      value: 3.409997
       objectReference: {fileID: 0}
     - target: {fileID: 286371156808959995, guid: 4e1cb530919e1fb4f84ee20b1380ce73, type: 3}
       propertyPath: m_LocalRotation.w
@@ -222,6 +226,18 @@ PrefabInstance:
     - target: {fileID: 286371156808959995, guid: 4e1cb530919e1fb4f84ee20b1380ce73, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0.47599754
+      objectReference: {fileID: 0}
+    - target: {fileID: 2834007828540230161, guid: 4e1cb530919e1fb4f84ee20b1380ce73, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -246
+      objectReference: {fileID: 0}
+    - target: {fileID: 2834007828540230161, guid: 4e1cb530919e1fb4f84ee20b1380ce73, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.54
+      objectReference: {fileID: 0}
+    - target: {fileID: 2834007828540230161, guid: 4e1cb530919e1fb4f84ee20b1380ce73, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -248.2
       objectReference: {fileID: 0}
     - target: {fileID: 8659473246039983698, guid: 4e1cb530919e1fb4f84ee20b1380ce73, type: 3}
       propertyPath: m_RootOrder
@@ -270,6 +286,10 @@ PrefabInstance:
     - target: {fileID: 8659473246039983699, guid: 4e1cb530919e1fb4f84ee20b1380ce73, type: 3}
       propertyPath: m_Name
       value: Controller
+      objectReference: {fileID: 0}
+    - target: {fileID: 8659473247266544760, guid: 4e1cb530919e1fb4f84ee20b1380ce73, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8659473247266544767, guid: 4e1cb530919e1fb4f84ee20b1380ce73, type: 3}
       propertyPath: m_IsActive
@@ -419,7 +439,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1773086247674445977, guid: a014504b072ae4b228d68253b6d2c083, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.5900002
+      value: 3.774
       objectReference: {fileID: 0}
     - target: {fileID: 1773086247674445977, guid: a014504b072ae4b228d68253b6d2c083, type: 3}
       propertyPath: m_LocalPosition.y
@@ -427,7 +447,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1773086247674445977, guid: a014504b072ae4b228d68253b6d2c083, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.9666668
+      value: -1.959
       objectReference: {fileID: 0}
     - target: {fileID: 1773086247674445977, guid: a014504b072ae4b228d68253b6d2c083, type: 3}
       propertyPath: m_LocalRotation.w
@@ -476,15 +496,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1638464914822384336, guid: 7de7fd860aeb9934284a3071aa265a7e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 106.30226
+      value: 110.01001
       objectReference: {fileID: 0}
     - target: {fileID: 1638464914822384336, guid: 7de7fd860aeb9934284a3071aa265a7e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 119.31
+      value: 122.85
       objectReference: {fileID: 0}
     - target: {fileID: 1638464914822384336, guid: 7de7fd860aeb9934284a3071aa265a7e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -117.87015
+      value: -114.3
       objectReference: {fileID: 0}
     - target: {fileID: 1638464914822384336, guid: 7de7fd860aeb9934284a3071aa265a7e, type: 3}
       propertyPath: m_LocalRotation.w
