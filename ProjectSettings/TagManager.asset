@@ -15,6 +15,7 @@ TagManager:
   - ForceField
   - WindArea
   - HexgonSphere
+  - Boss
   layers:
   - Default
   - TransparentFX

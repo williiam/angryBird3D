@@ -30,4 +30,5 @@ public class Pig : MonoBehaviour
         Destroy(smoke, 3);
         Destroy(gameObject);
     }
+
 }
