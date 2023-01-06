@@ -67,14 +67,14 @@ public class BirdManager : MonoBehaviour
 
         // 依照當前關卡設定不同數量的鳥
         int level = SceneManager.GetActiveScene().buildIndex - 1;
-        Debug.Log(level);
+        InitBirds(level);
         UpdateRemainBirdsText();
     }
 
-    public void InitBirds()
+    public void InitBirds(int level)
     {
         // 取得當前scene index
-        int level = SceneManager.GetActiveScene().buildIndex - 1;
+        // int level = SceneManager.GetActiveScene().buildIndex - 1;
         // 依照當前關卡設定不同數量的鳥
         switch (level)
         {
@@ -87,38 +87,38 @@ public class BirdManager : MonoBehaviour
             case 1:
                 remainRedBirds = 1;
                 remainYellowBirds = 1;
-                remainBLueBirds = 2;
+                remainBLueBirds = 1;
                 remainBlackBirds = 1;
                 break;
             case 2:
                 remainRedBirds = 2;
-                remainYellowBirds = 2;
+                remainYellowBirds = 1;
                 remainBLueBirds = 1;
                 remainBlackBirds = 1;
                 break;
             case 3:
-                remainRedBirds = 2;
+                remainRedBirds = 1;
                 remainYellowBirds = 2;
-                remainBLueBirds = 1;
+                remainBLueBirds = 2;
                 remainBlackBirds = 1;
                 break;
             case 4:
-                remainRedBirds = 2;
+                remainRedBirds = 1;
                 remainYellowBirds = 2;
-                remainBLueBirds = 3;
+                remainBLueBirds = 1;
                 remainBlackBirds = 2;
                 break;
             case 5:
                 remainRedBirds = 2;
                 remainYellowBirds = 2;
                 remainBLueBirds = 2;
-                remainBlackBirds = 1;
+                remainBlackBirds = 2;
                 break;
             case 6:
-                remainRedBirds = 2;
-                remainYellowBirds = 3;
-                remainBLueBirds = 3;
-                remainBlackBirds = 2;
+                remainRedBirds = 0;
+                remainYellowBirds = 1;
+                remainBLueBirds = 1;
+                remainBlackBirds = 1;
                 break;
             default:
                 remainRedBirds = 1;

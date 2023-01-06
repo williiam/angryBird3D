@@ -52,7 +52,7 @@ public class MoveTogether : MonoBehaviour
             _elapsedTime += Time.deltaTime;
             elapsedPercentage = _elapsedTime / _timeToWaypoint;
             elapsedPercentage = Mathf.SmoothStep(0, 1, elapsedPercentage);
-            this.transform.position = Vector3.Lerp(_targetWaypoint.position, _previousWaypoint.position, elapsedPercentage);
+            this.transform.position = Vector3.Lerp(_previousWaypoint.position, _targetWaypoint.position, elapsedPercentage);
             yield return null;
         }
         TargetNextWaypoint();

@@ -8,7 +8,7 @@ public class Pig : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
-        if (other.relativeVelocity.magnitude > 3f)
+        if (other.relativeVelocity.magnitude > 5f)
         {
             Destroy();
             if(other.gameObject.tag == "Bird") {

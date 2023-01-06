@@ -22036,6 +22036,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -249.6
       objectReference: {fileID: 0}
+    - target: {fileID: 2834007829106550196, guid: 4e1cb530919e1fb4f84ee20b1380ce73, type: 3}
+      propertyPath: GrowEdge
+      value: 10000
+      objectReference: {fileID: 0}
     - target: {fileID: 4081373973261954389, guid: 4e1cb530919e1fb4f84ee20b1380ce73, type: 3}
       propertyPath: m_FollowOffset.y
       value: -0.05
