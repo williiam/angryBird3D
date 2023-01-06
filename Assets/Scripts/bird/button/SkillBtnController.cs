@@ -27,10 +27,13 @@ public class SkillBtnController : MonoBehaviour
     public void OnSkillBtnClick()
     {
         var bird = BirdManager.Instance.GetCurrentBird();
-        if (bird != null)
+        // 取得目前ShootStage
+        int stage = GameManagerV2.Instance.getCameraStatus();
+        if(stage==0||bird == null)
         {
-            bird.OnSkillBtnClick();
+            return;
         }
+        bird.OnSkillBtnClick();
     }
     public void EnableSkillBtn()
     {
