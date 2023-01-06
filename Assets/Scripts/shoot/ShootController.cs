@@ -68,7 +68,7 @@ public class ShootController : MonoBehaviour
     void Update()
     {
         int stage = GameManagerV2.Instance.getCameraStatus();
-        Debug.Log(stage);
+        //Debug.Log(stage);
         bird = BirdManager.Instance.GetCurrentBird();
         if(stage == 0||stage == 1) {
             BirdMenu.Instance.gameObject.SetActive(true);
@@ -162,7 +162,7 @@ public class ShootController : MonoBehaviour
     }
 
     private Vector3 ForceGenerator(Vector3 initForce) {
-        Debug.Log(initForce);
+        //Debug.Log(initForce);
         return new Vector3(initForce.x, initForce.y, 1.5f * initForce.y);
     }
 
