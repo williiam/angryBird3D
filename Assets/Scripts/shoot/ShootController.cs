@@ -27,6 +27,9 @@ public class ShootController : MonoBehaviour
     [SerializeField]
     private CinemachineVirtualCamera vCm;
 
+    [SerializeField]
+    private float GrowEdge = 100.0f;
+
     private Vector3 mousePressDownPos;
     private Vector3 mouseReleasePos;
 
@@ -68,7 +71,6 @@ public class ShootController : MonoBehaviour
     void Update()
     {
         int stage = GameManagerV2.Instance.getCameraStatus();
-        //Debug.Log(stage);
         bird = BirdManager.Instance.GetCurrentBird();
         if(stage == 0||stage == 1) {
             BirdMenu.Instance.gameObject.SetActive(true);
@@ -131,7 +133,7 @@ public class ShootController : MonoBehaviour
         shootPlayer.PlayOneShot(SlingshotRelease);
          SetStage(2);
         mouseReleasePos = Input.mousePosition;
-        Shoot(mousePressDownPos - mouseReleasePos);
+        Shoot(mouseReleasePos - mousePressDownPos);
         BirdManager.Instance.OnBirdShoot();
     }
 
@@ -141,7 +143,7 @@ public class ShootController : MonoBehaviour
         }
         int stage = GameManagerV2.Instance.getCameraStatus();
         Vector3 forceInit = (Input.mousePosition - mousePressDownPos);
-        Vector3 forceV = (new Vector3(forceInit.x, forceInit.y, forceInit.y)) * forceMultiplier;
+        Vector3 forceV = (ForceGenerator(forceInit)) * forceMultiplier;
         Vector3 newPos = startPosition + ((ForceGenerator(forceInit) / rb.mass ) * Time.fixedDeltaTime);
         if(newPos.y < 1) newPos.y = 1;
         if(newPos.z + 2 > transform.position.z) newPos.z = transform.position.z - 2;
@@ -156,13 +158,16 @@ public class ShootController : MonoBehaviour
         shootPlayer.PlayOneShot(Flying);
         Rigidbody _rb = bird.GetComponent<Rigidbody>();
         Vector3 force = ForceGenerator(Force)  * forceMultiplier;
-        _rb.AddForce(force);
+        _rb.AddForce(force * -1.0f);
         TrajectoryDrawer.Instance.ClearTrajectory();
         bird.Release();
     }
 
     private Vector3 ForceGenerator(Vector3 initForce) {
         //Debug.Log(initForce);
+        if(initForce.y < GrowEdge * -1.0f) {
+            return new Vector3(initForce.x, GrowEdge * -1.0f, 2.0f * initForce.y);
+        }
         return new Vector3(initForce.x, initForce.y, 1.5f * initForce.y);
     }
 
